@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Providers;
-
 use App\Usuario;
+use App\Alerta;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('usuarios.index', function($view){
             $usuarios = Usuario::get();
             $view->with('usuarios', $usuarios);
+        });
+
+        view()->composer('alertas.index', function($view){
+            $alertas = Alerta::get();
+            $view->with('alertas', $alertas);
         });
     }
 

@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaUsuarios extends Migration
+class CriarTabelaRotasFugas extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,15 +13,12 @@ class CriarTabelaUsuarios extends Migration
      */
     public function up()
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('rotasfugas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 255);
-            $table->string('email', 255)->nullable();
-            $table->string('cpf', 14)->unique()->index();
-            $table->string('senha', 255);
-            $table->string('bloqueado', 255);
-            $table->string('idsala', 10);
-            $table->string('tipo_usuario_id', 255);
+            $table->string('instrucao', 255);
+            /*Não encontrei mediumblob*/
+            $table->mediumText('imagem', 255);
             $table->timestamps();
         });
     }
@@ -34,7 +30,6 @@ class CriarTabelaUsuarios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('rotasfugas');
     }
 }
-
