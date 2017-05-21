@@ -3,33 +3,40 @@
 namespace App\Http\Controllers;
 use App\Alerta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class AlertasController extends Controller
 {
     public function index()
     {
-        return view ('alertas.index');
+        $alertas = Alerta::all();
+        return view('alertas.index',  ['alertas'=>$alertas]);
     }
 
 
     public function create()
     {
-        return view('alertas.criar');
+        $alertas = Alerta::all();
+        return view('alertas.criar',  ['alertas'=>$alertas]);
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
-        $alertas = new Alerta ();
-        $alertas -> id_cliente  = Input::get('id_cliente');
-        $alertas -> prioridade = Input::get('prioridade');
-        $alertas -> data_criacao = Input::get('data_criacao');
-        $alertas -> descricao = Input::get('descricao');
-        $alertas -> qtd_aprovadores = Input::get('qtd_aprovadores');
-        $alertas -> tipo_alerta_id = Input::get('tipo_alerta_id');
-        $alertas -> status_alerta_id = Input::get('status_alerta_id');
-        $alertas -> usuario_idusuario = Input::get('usuario_idusuario');
-        $alertas -> save();
+        $alerta = new Alerta ();
+        $alerta->razao = Input::get('razao');
+        $alerta -> prioridade = Input::get('prioridade');
+        $alerta -> data_criacao = Input::get('data_criacao');
+        $alerta -> descricao = Input::get('descricao');
+        $alerta -> qtd_aprovadores = Input::get('qtd_aprovadores');
+        $alerta -> tipo_alerta_id = Input::get('tipo_alerta_id');
+        $alerta -> status_alerta_id = Input::get('status_alerta_id');
+        $alerta -> usuario_idusuario = Input::get('usuario_idusuario');
+        $alerta -> save();
 
         return redirect()->route('alertas.index');
     }

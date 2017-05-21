@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaRotasFugas extends Migration
+class CriarTabelaTipoAlertas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CriarTabelaRotasFugas extends Migration
      */
     public function up()
     {
-        Schema::create('rotasfugas', function (Blueprint $table) {
+        Schema::create('tipoalertas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome', 255);
-            $table->string('instrucao', 255);
-            /*Não encontrei mediumblob*/
-            $table->mediumText('imagem', 255);
+            $table->string('descricao', 45);
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CriarTabelaRotasFugas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rotasfugas');
+        Schema::dropIfExists('tipoalertas');
     }
 }

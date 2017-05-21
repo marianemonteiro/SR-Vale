@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaRotasFugasSalas extends Migration
+class CriarTabelaRotafugasSalas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CriarTabelaRotasFugasSalas extends Migration
      */
     public function up()
     {
-        Schema::create('rotasfugas_salas', function (Blueprint $table) {
-
+        Schema::create('rotafugas_salas', function (Blueprint $table) {
             $table->integer('idrotafuga')->unsigned();
             $table->foreign('idrotafuga')
                 ->references('id')
-                ->on('rotasfugas')
+                ->on('rotafugas')
                 ->onDelete('cascade');
 
             $table->integer('idsala')->unsigned();
@@ -27,8 +26,7 @@ class CriarTabelaRotasFugasSalas extends Migration
                 ->on('salas')
                 ->onDelete('cascade');
 
-            $table->timestamps();
-
+            $table->primary(['idrotafuga', 'idsala']);
         });
     }
 
@@ -39,6 +37,6 @@ class CriarTabelaRotasFugasSalas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rotasfugas_salas');
+        Schema::dropIfExists('rotafugas_salas');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaTiposMensagens extends Migration
+class CriarTabelaTipoMensagens extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CriarTabelaTiposMensagens extends Migration
      */
     public function up()
     {
-        Schema::create('tipos_mensagens', function (Blueprint $table) {
+        Schema::create('tipomensagens', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao', 45);
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CriarTabelaTiposMensagens extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipos_mensagens');
+        Schema::dropIfExists('tipomensagens');
     }
 }

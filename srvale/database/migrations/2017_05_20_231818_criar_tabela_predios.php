@@ -22,7 +22,7 @@ class CriarTabelaPredios extends Migration
             $table->integer('idpontoencontro')->unsigned();
             $table->foreign('idpontoencontro')
                 ->references('id')
-                ->on('pontosencontros')
+                ->on('pontoencontros')
                 ->onDelete('cascade');
 
             $table->timestamps();

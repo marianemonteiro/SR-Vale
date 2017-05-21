@@ -11,13 +11,15 @@ class UsuariosController extends Controller
 
     public function index()
     {
-        return view ('usuarios.index');
+        $usuarios = Usuario::all();
+        return view('usuarios.index',  ['usuarios'=>$usuarios]);
     }
 
 
     public function create()
     {
-        return view('usuarios.criar');
+        $usuarios = Usuario::all();
+        return view('usuarios.criar',  ['usuarios'=>$usuarios]);
     }
 
 

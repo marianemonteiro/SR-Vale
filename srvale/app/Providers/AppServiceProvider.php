@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Providers;
+use App\Pontoencontro;
+use App\Predio;
+use App\Sala;
 use App\Usuario;
 use App\Alerta;
 use Illuminate\Support\ServiceProvider;
@@ -14,15 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('usuarios.index', function($view){
-            $usuarios = Usuario::get();
-            $view->with('usuarios', $usuarios);
-        });
 
-        view()->composer('alertas.index', function($view){
-            $alertas = Alerta::get();
-            $view->with('alertas', $alertas);
-        });
     }
 
     /**

@@ -16,9 +16,22 @@ Route::get('/', function () {
 });
 
 
+Route::resource('pontoencontros', 'PontoencontrosController');
 
 Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('alertas', 'AlertasController');
 
+Route::resource('predios', 'PrediosController');
 
+Route::resource('salas', 'SalasController');
+
+Route::resource('rotafugas', 'RotafugasController');
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

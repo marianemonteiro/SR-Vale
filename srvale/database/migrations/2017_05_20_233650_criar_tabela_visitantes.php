@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaFuncionarios extends Migration
+class CriarTabelaVisitantes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CriarTabelaFuncionarios extends Migration
      */
     public function up()
     {
-        Schema::create('funcionarios', function (Blueprint $table) {
+        Schema::create('visitantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('matricula', 20);
-            $table->string('treinamento', 255);
+            $table->string('voucher', 45);
 
-            $table->integer('idusuario')->unsigned();
-            $table->foreign('idusuario')
+            $table->integer('usuario_id')->unsigned();
+            $table->foreign('usuario_id')
                 ->references('id')
                 ->on('usuarios')
                 ->onDelete('cascade');
@@ -35,6 +34,6 @@ class CriarTabelaFuncionarios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('visitantes');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaStatusAlertas extends Migration
+class CriarTabelaTipoUsuarios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CriarTabelaStatusAlertas extends Migration
      */
     public function up()
     {
-        Schema::create('status_alertas', function (Blueprint $table) {
+        Schema::create('tipousuarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descricao', 45);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CriarTabelaStatusAlertas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_alertas');
+        Schema::dropIfExists('tipousuarios');
     }
 }

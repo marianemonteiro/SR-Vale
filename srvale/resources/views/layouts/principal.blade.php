@@ -9,7 +9,7 @@
 
     <title> SR Vale </title>
 
-        <link href="../css/main.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
         @yield('estilos')
 
 </head>
@@ -19,6 +19,11 @@
         <ul>
             <a href="{{route('usuarios.index')}}"><li>Usuários</li></a>
             <a href="{{route('alertas.index')}}"><li>Alertas</li></a>
+            <a href="{{route('predios.index')}}"><li>Prédios</li></a>
+            <a href="{{route('pontoencontros.index')}}"><li>Ponto de encontro</li></a>
+            <a href="{{route('salas.index')}}"><li>Salas</li></a>
+            <a href="{{route('rotafugas.index')}}"><li>Rota de Fuga</li></a>
+
         </ul>
 
     </nav>

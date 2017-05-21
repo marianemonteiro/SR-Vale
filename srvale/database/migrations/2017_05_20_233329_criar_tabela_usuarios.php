@@ -13,7 +13,6 @@ class CriarTabelaUsuarios extends Migration
      */
     public function up()
     {
-
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 255);
@@ -22,19 +21,17 @@ class CriarTabelaUsuarios extends Migration
             $table->string('senha', 50);
             $table->integer('bloqueado');
 
-            $table->integer('tipo_usuario_id')->unsigned();
-            $table->foreign('tipo_usuario_id')
+            $table->integer('tipousuario_id')->unsigned();
+            $table->foreign('tipousuario_id')
                 ->references('id')
-                ->on('tipos_usuarios')
+                ->on('tipousuarios')
                 ->onDelete('cascade');
 
-            $table->integer('idsala')->unsigned();
-            $table->foreign('idsala')
+            $table->integer('sala_id')->unsigned();
+            $table->foreign('sala_id')
                 ->references('id')
                 ->on('salas')
                 ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 

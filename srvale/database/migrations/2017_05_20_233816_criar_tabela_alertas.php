@@ -22,30 +22,25 @@ class CriarTabelaAlertas extends Migration
             $table->integer('qtd_aprovadores');
 
 
-            $table->integer('tipo_alerta_id')->unsigned();
-            $table->foreign('tipo_alerta_id')
+            $table->integer('tipoalerta_id')->unsigned();
+            $table->foreign('tipoalerta_id')
                 ->references('id')
-                ->on('tipos_alertas')
+                ->on('tipoalertas')
                 ->onDelete('cascade');
 
-            $table->integer('status_alerta_id')->unsigned();
-            $table->foreign('status_alerta_id')
+            $table->integer('statusalerta_id')->unsigned();
+            $table->foreign('statusalerta_id')
                 ->references('id')
-                ->on('status_alertas')
+                ->on('statusalertas')
                 ->onDelete('cascade');
 
-            $table->integer('usuario_idusuario')->unsigned();
-            $table->foreign('usuario_idusuario')
+            $table->integer('usuario_id')->unsigned();
+            $table->foreign('usuario_id')
                 ->references('id')
                 ->on('usuarios')
                 ->onDelete('cascade');
-
-
-            $table->timestamps();
         });
     }
-
-
 
     /**
      * Reverse the migrations.

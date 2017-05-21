@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaTiposAlertas extends Migration
+class CriarTabelaRotaFugas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CriarTabelaTiposAlertas extends Migration
      */
     public function up()
     {
-        Schema::create('tipos_alertas', function (Blueprint $table) {
+        Schema::create('rotafugas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao', 45);
+            $table->string('nome', 255);
+            $table->string('instrucao', 255);
+            $table->binary('imagem', 255);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CriarTabelaTiposAlertas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipos_alertas');
+        Schema::dropIfExists('rotafugas');
     }
 }

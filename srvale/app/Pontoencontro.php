@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Alerta extends Model
+class Pontoencontro extends Model
 {
 
 }
