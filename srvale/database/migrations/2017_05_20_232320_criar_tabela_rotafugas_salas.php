@@ -13,20 +13,20 @@ class CriarTabelaRotafugasSalas extends Migration
      */
     public function up()
     {
-        Schema::create('rotafugas_salas', function (Blueprint $table) {
-            $table->integer('idrotafuga')->unsigned();
-            $table->foreign('idrotafuga')
+        Schema::create('rotafuga_salas', function (Blueprint $table) {
+            $table->integer('rotafuga_id')->unsigned();
+            $table->foreign('rotafuga_id')
                 ->references('id')
                 ->on('rotafugas')
                 ->onDelete('cascade');
 
-            $table->integer('idsala')->unsigned();
-            $table->foreign('idsala')
+            $table->integer('sala_id')->unsigned();
+            $table->foreign('sala_id')
                 ->references('id')
                 ->on('salas')
                 ->onDelete('cascade');
 
-            $table->primary(['idrotafuga', 'idsala']);
+            $table->primary(['rotafuga_id', 'sala_id']);
         });
     }
 

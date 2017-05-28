@@ -20,12 +20,22 @@
                         <input type="text" name="instrucao" id="instrucao" value="{{$instrucao}}" required autofocus/>
                     </fieldset>
                     <fieldset>
-                        <legend>Imagem: </legend>
-                        <input type="image" name="imagem" id="imagem" value="{{$imagem}}" required autofocus/>
+                        <legend>Sala: </legend>
+                        <select name="sala_id" id="sala_id" required autofocus/>
+                        @if($salas->count() > 0)
+                            @foreach($salas as $sala)
+                                @if($sala_id == $sala->id)
+                                    <option value="{{$sala->id}}" selected >{{$sala->nome}}</option>
+                                @else
+                                    <option value="{{$sala->id}}">{{$sala->nome}}</option>
+                                @endif
+                            @endForeach
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset>
-                        <legend>Sala: </legend>
-                        <input type="number" name="idsala" id="idsala" value="{{$idsala}}" required autofocus/>
+                        <legend>Imagem: </legend>
+                        <input type="file" name="imagem" id="imagem" value="{{$imagem}}" required autofocus/>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />

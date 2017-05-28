@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sala extends Model
 {
-    public function rotafuga(){
-        return $this->belongsTo(Rotafuga::Class);
+    public function predio(){
+
+        return $this -> belongsTo(Predio::Class);
+    }
+
+    public function usuarios(){
+
+    return $this -> hasMany(Usuario::Class);
+    }
+
+    public function rotadefugas(){
+        return $this -> belongsToMany(Rotafuga::Class, 'rotafugas_salas');
     }
 }

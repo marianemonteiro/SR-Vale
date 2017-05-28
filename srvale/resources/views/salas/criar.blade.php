@@ -24,7 +24,13 @@
                     </fieldset>
                     <fieldset>
                         <legend>Prédio: </legend>
-                        <input type="text" name="idpredio" id="idpredio" required autofocus/>
+                        <select name="predio_id" id="predio_id" required autofocus/>
+                        @if($predios->count() > 0)
+                            @foreach($predios as $predio)
+                                <option value="{{$predio->id}}">{{$predio->nome}}</option>
+                                @endForeach
+                                @endif
+                         </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />

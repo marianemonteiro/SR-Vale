@@ -8,7 +8,7 @@
 
         <section>
             <div class="formulario">
-                <form method="post" action="{{ route('salasalertas.update', ['id' => $id]) }}">
+                <form method="post" action="{{ route('salas.update', ['id' => $id]) }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PUT">
                     <fieldset>
@@ -25,7 +25,17 @@
                     </fieldset>
                     <fieldset>
                         <legend>Prédio: </legend>
-                        <input type="text" name="idpredio" id="idpredio" value="{{$idpredio}}" required autofocus/>
+                        <select name="predio_id" id="predio_id" required autofocus/>
+                        @if($predios->count() > 0)
+                            @foreach($predios as $predio)
+                                @if($predio_id == $predio->id)
+                                    <option value="{{$predio->id}}" selected >{{$predio->nome}}</option>
+                                @else
+                                    <option value="{{$predio->id}}">{{$predio->nome}}</option>
+                                    @endif
+                                    @endForeach
+                                    @endif
+                         </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />

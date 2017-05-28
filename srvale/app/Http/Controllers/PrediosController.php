@@ -1,34 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Pontoencontro;
 use App\Predio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class PrediosController extends Controller
 {
     public function index()
-    {
+
+    {   $pontoencontros = Pontoencontro::all();
         $predios = Predio::all();
-        return view('predios.index',  ['predios'=>$predios]);
+        return view('predios.index',  ['predios'=>$predios, 'pontoencontros' => $pontoencontros]);
     }
 
 
     public function create()
     {
+        $pontoencontros = Pontoencontro::all();
         $predios = Predio::all();
-        return view('predios.criar',  ['predios'=>$predios]);
+        return view('predios.criar',  ['predios'=>$predios, 'pontoencontros' => $pontoencontros]);
     }
 
 
     public function store(Request $request)
     {
-        $predios = new Predio ();
+        $predios = new Predio();
         $predios -> id  = Input::get('id');
         $predios -> nome = Input::get('nome');
         $predios -> qtdandar = Input::get('qtdandar');
         $predios -> descricao = Input::get('descricao');
-        $predios -> idpontoencontro = Input::get('idpontoencontro');
-
+        $predios -> pontoencontro_id = Input::get('pontoencontro_id');
+        $predios -> save();
+        //return response()->json($predios);
         return redirect()->route('predios.index');
     }
 
@@ -37,19 +42,22 @@ class PrediosController extends Controller
     {
 
         $predio = Predio::find($id);
-        return view('predios.detalhes', ['alerta'=>$predio]);
+        return view('predios.detalhes', ['predio'=>$predio]);
     }
 
 
     public function edit ($id)
     {
+
         $predio = Predio::find($id);
+        $pontoencontros = Pontoencontro::all();
         return view('predios.edit', [
             'id' => $predio->id,
             'nome' => $predio->nome,
             'qtdandar' => $predio->qtdandar,
             'descricao' => $predio->descricao,
-            'idpontoencontro' => $predio->idpontoencontro
+            'pontoencontro_id' => $predio->pontoencontro_id,
+            'pontoencontros' => $pontoencontros
         ]);
     }
 
@@ -59,14 +67,13 @@ class PrediosController extends Controller
 
 
         $predio = Predio::find($id);
-        $predio->id = Input::get('id');
         $predio->nome = Input::get('nome');
         $predio->qtdandar = Input::get('qtdandar');
         $predio->descricao = Input::get('descricao');
-        $predio->idpontoencontro = Input::get('idpontoencontro');
+        $predio->pontoencontro_id = Input::get('pontoencontro_id');
         $predio->save();
 
-        return redirect()->route('alertas.index');
+        return redirect()->route('predios.index');
     }
 
 

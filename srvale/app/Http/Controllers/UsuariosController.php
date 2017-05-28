@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Sala;
+use App\Tipousuario;
 use Illuminate\Http\Request;
 use App\Usuario;
 use Illuminate\Support\Facades\Input;
@@ -11,15 +13,21 @@ class UsuariosController extends Controller
 
     public function index()
     {
+        $salas = Sala::all();
+        $tipousuarios = Tipousuario::all();
         $usuarios = Usuario::all();
-        return view('usuarios.index',  ['usuarios'=>$usuarios]);
+        return view('usuarios.index',  ['usuarios'=>$usuarios, 'tipousuarios' => $tipousuarios,
+                                        'salas' => $salas]);
     }
 
 
     public function create()
     {
+        $salas = Sala::all();
+        $tipousuarios = Tipousuario::all();
         $usuarios = Usuario::all();
-        return view('usuarios.criar',  ['usuarios'=>$usuarios]);
+        return view('usuarios.criar',  ['usuarios'=>$usuarios, 'tipousuarios' => $tipousuarios,
+            'salas' => $salas]);
     }
 
 
@@ -31,8 +39,8 @@ class UsuariosController extends Controller
         $usuarios -> cpf = Input::get('cpf');
         $usuarios -> senha = Input::get('senha');
         $usuarios -> bloqueado = Input::get('bloqueado');
-        $usuarios -> idsala = Input::get('idsala');
-        $usuarios -> tipo_usuario_id = Input::get('tipo_usuario_id');
+        $usuarios -> sala_id = Input::get('sala_id');
+        $usuarios -> tipousuario_id = Input::get('tipousuario_id');
         $usuarios -> save();
 
         return redirect()->route('usuarios.index');
@@ -49,16 +57,20 @@ class UsuariosController extends Controller
 
     public function edit ($id)
     {
-        $usuario = Usuario::find($id);
+        $usuarios = Usuario::find($id);
+        $salas = Sala::all();
+        $tipousuarios = Tipousuario::all();
         return view('usuarios.edit', [
-            'id' => $usuario->id,
-            'nome' => $usuario->nome,
-            'email' => $usuario->email,
-            'cpf' => $usuario->cpf,
-            'senha' => $usuario->senha,
-            'bloqueado' => $usuario->bloqueado,
-            'idsala' => $usuario->idsala,
-            'tipo_usuario_id' => $usuario->tipo_usuario_id
+            'id' => $usuarios->id,
+            'nome' => $usuarios->nome,
+            'email' => $usuarios->email,
+            'cpf' => $usuarios->cpf,
+            'senha' => $usuarios->senha,
+            'bloqueado' => $usuarios->bloqueado,
+            'sala_id' => $usuarios->sala_id,
+            'tipousuario_id' => $usuarios->tipousuario_id,
+            'salas' => $salas,
+            'tipousuarios' => $tipousuarios
         ]);
     }
 
@@ -73,8 +85,8 @@ class UsuariosController extends Controller
         $usuario->cpf = Input::get('cpf');
         $usuario->senha = Input::get('senha');
         $usuario->bloqueado = Input::get('bloqueado');
-        $usuario->idsala = Input::get('idsala');
-        $usuario->tipo_usuario_id = Input::get('tipo_usuario_id');
+        $usuario->sala_id = Input::get('sala_id');
+        $usuario->tipousuario_id = Input::get('tipousuario_id');
         $usuario->save();
 
         return redirect()->route('usuarios.index');

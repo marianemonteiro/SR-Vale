@@ -6,6 +6,22 @@
 
     <h1> Cadastro de Rota de Fuga </h1>
 
+    @if (session('erro'))
+        <div class="alert alert-danger">
+            {{ session('erro') }}
+        </div>
+    @endif
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
         <section>
             <div class="formulario">
                 <form method="post" action="{{ route('rotafugas.store') }}">
@@ -20,11 +36,17 @@
                     </fieldset>
                     <fieldset>
                         <legend>Imagem: </legend>
-                        <input type="image" name="imagem" id="imagem" required autofocus/>
+                        <input type="file" name="imagem" id="imagem" required autofocus/>
                     </fieldset>
                     <fieldset>
                         <legend>Sala: </legend>
-                        <input type="text" name="sala_id" id="descricao" required autofocus/>
+                        <select name="sala_id" id="sala_id" required autofocus/>
+                        @if($salas->count() > 0)
+                            @foreach($salas as $sala)
+                                <option value="{{$sala->id}}">{{$sala->nome}}</option>
+                                @endForeach
+                                @endif
+                                </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />

@@ -31,8 +31,8 @@
                                 <td>{{ $item -> cpf }}</td>
                                 <td>{{ $item -> senha }}</td>
                                 <td>{{ $item -> bloqueado }}</td>
-                                <td>{{ $item -> idsala }}</td>
-                                <td>{{ $item -> tipo_usuario_id }}</td>
+                                <td>{{ $item -> sala -> nome }}</td>
+                                <td>{{ $item -> tipousuario ->descricao }}</td>
                                 <td class='editar'> <a href ="{{route('usuarios.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('usuarios.destroy', ['id' =>$item-> id])}}">

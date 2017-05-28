@@ -32,6 +32,8 @@ class CriarTabelaUsuarios extends Migration
                 ->references('id')
                 ->on('salas')
                 ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

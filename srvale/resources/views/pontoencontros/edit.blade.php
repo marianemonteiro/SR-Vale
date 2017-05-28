@@ -1,10 +1,10 @@
 @extends('layouts.principal')
 
-@section('titulo', 'Editar Alerta')
+@section('titulo', 'Editar Ponto de Encontro')
 
 @section('conteudo')
 
-    <h1> Editar Alerta </h1>
+    <h1> Editar Ponto de Encontro </h1>
 
         <section>
             <div class="formulario">
@@ -12,32 +12,14 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PUT">
                     <fieldset>
-                        <legend>Cliente: </legend>
-                        <input type="text" name="id_cliente" id="id_cliente" value="{{$id_cliente}}" required autofocus/>
+                        <legend>Nome: </legend>
+                        <input type="text" name="nome" id="nome" value="{{$nome}}" required autofocus/>
                     </fieldset>
                     <fieldset>
-                        <legend>Prioridade: </legend>
-                        <input type="text" name="prioridade" id="prioridade" value="{{$prioridade}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Data: </legend>
-                        <input type="date" name="data_criacao" id="data_criacao" value="{{$data_criacao}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Quantidade aprovadores: </legend>
-                        <input type="number" name="qtd_aprovadores" id="qtd_aprovadores" value="{{$qtd_aprovadores}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Tipo: </legend>
-                        <input type="text" name="tipo_alerta_id" id="tipo_alerta_id" value="{{$tipo_alerta_id}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Status: </legend>
-                        <input type="text" name="status_alerta_id" id="status_alerta_id" value="{{$status_alerta_id}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Usuário: </legend>
-                        <input type="text" name="usuario_idusuario" id="usuario_idusuario" value="{{$tipo_usuario_id}}" required autofocus/>
+                        <legend>Instrução: </legend>
+                        <textarea rows="10" cols="40" maxlength="500"
+                            name="instrucao" id="instrucao"   requiered autofocus>{{$instrucao}}
+                        </textarea>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />

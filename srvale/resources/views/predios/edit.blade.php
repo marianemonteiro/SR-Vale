@@ -25,7 +25,17 @@
                     </fieldset>
                     <fieldset>
                         <legend>Ponto de encontro: </legend>
-                        <input type="text" name="idpontoencontro" id="idpontoencontro" value="{{$idpontoencontro}}" required autofocus/>
+                        <select name="pontoencontro_id" id="pontoencontro_id" required autofocus/>
+                        @if($pontoencontros->count() > 0)
+                            @foreach($pontoencontros as $pontoencontro)
+                                @if($pontoencontro_id == $pontoencontro->id)
+                                    <option value="{{$pontoencontro->id}}" selected >{{$pontoencontro->nome}}</option>
+                                @else
+                                    <option value="{{$pontoencontro->id}}">{{$pontoencontro->nome}}</option>
+                                    @endif
+                                    @endForeach
+                                    @endif
+                        </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />

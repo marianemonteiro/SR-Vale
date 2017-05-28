@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Predio;
 use App\Sala;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class SalasController extends Controller
 {
     public function index()
     {
+        $predios = Predio::all();
         $salas = Sala::all();
-        return view('salas.index',  ['salas'=>$salas]);
+        return view('salas.index',  ['salas'=>$salas, 'predios' => $predios]);
     }
 
 
     public function create()
     {
+        $predios = Predio::all();
         $salas = Sala::all();
-        return view('salas.criar',  ['salas'=>$salas]);
+        return view('salas.criar',  ['salas'=>$salas, 'predios' => $predios]);
     }
 
 
@@ -27,7 +31,7 @@ class SalasController extends Controller
         $salas -> nome  = Input::get('nome');
         $salas -> numero = Input::get('numero');
         $salas -> andar = Input::get('andar');
-        $salas -> idpredio = Input::get('idpredio');
+        $salas -> predio_id = Input::get('predio_id');
         $salas -> save();
 
         return redirect()->route('salas.index');
@@ -45,12 +49,14 @@ class SalasController extends Controller
     public function edit ($id)
     {
         $sala = Sala::find($id);
+        $predios = Predio::all();
         return view('salas.edit', [
             'id' => $sala->id,
             'nome' => $sala->nome,
             'numero' => $sala->numero,
             'andar' => $sala->andar,
-            'idpredio' => $sala->idpredio
+            'predio_id' => $sala->predio_id,
+            'predios' => $predios
         ]);
     }
 
@@ -63,7 +69,7 @@ class SalasController extends Controller
         $sala->nome = Input::get('nome');
         $sala->numero = Input::get('numero');
         $sala->andar = Input::get('andar');
-        $sala->idpredio = Input::get('idpredio');
+        $sala->predio_id = Input::get('predio_id');
         $sala->save();
 
         return redirect()->route('salas.index');

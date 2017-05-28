@@ -19,8 +19,8 @@ class CriarTabelaPredios extends Migration
             $table->string('qtdandar', 45);
             $table->string('descricao', 255);
 
-            $table->integer('idpontoencontro')->unsigned();
-            $table->foreign('idpontoencontro')
+            $table->integer('pontoencontro_id')->unsigned();
+            $table->foreign('pontoencontro_id')
                 ->references('id')
                 ->on('pontoencontros')
                 ->onDelete('cascade');

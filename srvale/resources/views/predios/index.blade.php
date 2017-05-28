@@ -11,6 +11,7 @@
                 </div>
                 <table>
                     <tr>
+                        <td>ID</td>
                         <td>Nome</td>
                         <td>Quantidade por andar</td>
                         <td>Descrição</td>
@@ -24,7 +25,8 @@
                                 <td>{{ $item -> id }}</td>
                                 <td>{{ $item -> nome }}</td>
                                 <td>{{ $item -> qtdandar }}</td>
-                                <td>{{ $item -> idpontoencontro }}</td>
+                                <td>{{ $item -> descricao }}</td>
+                                <td>{{ $item -> pontoencontro -> nome }}</td>
                                 <td class='editar'> <a href ="{{route('predios.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('predios.destroy', ['id' =>$item-> id])}}">

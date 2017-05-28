@@ -15,11 +15,11 @@ class CriarTabelaAlertas extends Migration
     {
         Schema::create('alertas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cliente');
+            $table->integer('cliente_id');
             $table->integer('prioridade');
             $table->date('data_criacao');
             $table->string('descricao', 132);
-            $table->integer('qtd_aprovadores');
+            $table->integer('qtdaprovadores');
 
 
             $table->integer('tipoalerta_id')->unsigned();
@@ -39,6 +39,8 @@ class CriarTabelaAlertas extends Migration
                 ->references('id')
                 ->on('usuarios')
                 ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

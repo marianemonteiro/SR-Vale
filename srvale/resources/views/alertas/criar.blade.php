@@ -12,11 +12,15 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <fieldset>
                         <legend>Cliente: </legend>
-                        <input type="text" name="id_cliente" id="id_cliente" required autofocus/>
+                        <input type="number" name="cliente_id" id="cliente_id" required autofocus/>
                     </fieldset>
                     <fieldset>
                         <legend>Prioridade: </legend>
-                        <input type="text" name="prioridade" id="prioridade" required autofocus/>
+                        <select name="prioridade" id="prioridade" required autofocus/>
+                        <option value="1" id="prioridade">Baixo</option>
+                        <option value="0" id="prioridade">Médio</option>
+                        <option value="2" id="prioridade">Alto</option>
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Data: </legend>
@@ -24,23 +28,41 @@
                     </fieldset>
                     <fieldset>
                         <legend>Descrição: </legend>
-                        <input type="password" name="descricao" id="descricao" required autofocus/>
+                        <input type="text" name="descricao" id="descricao" required autofocus/>
                     </fieldset>
                     <fieldset>
                         <legend>Quantidade de aprovadores: </legend>
-                        <input type="number" name="qtd_aprovadores" id="qtd_aprovadores" required autofocus/>
+                        <input type="number" name="qtdaprovadores" id="qtdaprovadores" required autofocus/>
                     </fieldset>
                     <fieldset>
                         <legend>Tipo de alerta: </legend>
-                        <input type="text" name="tipo_alerta_id" id="tipo_alerta_id" required autofocus/>
+                        <select name="tipoalerta_id" id="tipoalerta_id" required autofocus/>
+                        @if($tipoalertas->count() > 0)
+                            @foreach($tipoalertas as $tipoalerta)
+                                <option value="{{$tipoalerta->id}}">{{$tipoalerta->descricao}}</option>
+                            @endForeach
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Status: </legend>
-                        <input type="text" name="status_alerta_id" id="status_alerta_id" required autofocus/>
+                        <select name="statusalerta_id" id="statusalerta_id" required autofocus/>
+                        @if($statusalertas->count() > 0)
+                            @foreach($statusalertas as $statusalerta)
+                                <option value="{{$statusalerta->id}}">{{$statusalerta->descricao}}</option>
+                            @endForeach
+                        @endif
+                         </select>
                     </fieldset>
                     <fieldset>
                         <legend>Usuário: </legend>
-                        <input type="text" name="usuario_idusuario" id="usuario_idusuario" required autofocus/>
+                        <select name="usuario_id" id="usuario_id" required autofocus/>
+                        @if($usuarios->count() > 0)
+                            @foreach($usuarios as $usuario)
+                                <option value="{{$usuario->id}}">{{$usuario->nome}}</option>
+                            @endForeach
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />

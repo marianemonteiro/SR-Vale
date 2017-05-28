@@ -3,80 +3,89 @@
 namespace App\Http\Controllers;
 
 use App\Rotafuga;
+use App\Sala;
+use Symfony\Component\HttpFoundation\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class RotafugasController extends Controller
 {
     public function index()
     {
         $rotafugas = Rotafuga::all();
-        return view('rotafugas.index',  ['rotafugas'=>$rotafugas]);
+        $salas = Sala::all();
+        return view('rotafugas.index', ['rotafugas'=>$rotafugas, 'salas'=>$salas]);
     }
 
 
     public function create()
     {
         $rotafugas = Rotafuga::all();
-        return view('rotafugas.criar',  ['rotafugas'=>$rotafugas]);
+        $salas = Sala::all();
+        return view('rotafugas.criar', ['rotafugas'=>$rotafugas, 'salas'=>$salas]);
     }
-
 
     public function store(Request $request)
     {
-        $predios = new Predio ();
-        $predios -> id  = Input::get('id');
-        $predios -> nome = Input::get('nome');
-        $predios -> qtdandar = Input::get('qtdandar');
-        $predios -> descricao = Input::get('descricao');
-        $predios -> idpontoencontro = Input::get('idpontoencontro');
+        $rotafugas = new Rotafuga();
+        $rotafugas -> nome  = Input::get('nome');
+        $rotafugas -> instrucao = Input::get('instrucao');
+        $rotafugas -> imagem = Input::get('imagem');
+        $rotafugas -> save();
 
-        return redirect()->route('predios.index');
+        //Tabela intermediária, anexando
+        $rotafugas -> salas()->attach(Input::get('sala_id'));
+
+        return redirect()->route('rotafugas.index');
     }
 
 
     public function show($id)
     {
 
-        $predio = Predio::find($id);
-        return view('predios.detalhes', ['alerta'=>$predio]);
+        $rotafugas = Rotafuga::find($id);
+        return view('rotafugas.show', ['rotafugas'=>$rotafugas]);
     }
 
 
     public function edit ($id)
     {
-        $predio = Predio::find($id);
-        return view('predios.edit', [
-            'id' => $predio->id,
-            'nome' => $predio->nome,
-            'qtdandar' => $predio->qtdandar,
-            'descricao' => $predio->descricao,
-            'idpontoencontro' => $predio->idpontoencontro
+        $rotafugas = Rotafuga::find($id);
+        $salas = Sala::all();
+        return view('motoristas.edit', [
+            'id' => $rotafugas->id,
+            'nome' => $rotafugas->nome,
+            'instrucao' => $rotafugas->instrucao,
+            'imagem' => $rotafugas->imagem,
+            'sala_id' => $rotafugas->sala_id,
+            'salas' => $salas
         ]);
     }
+
 
 
     public function update(Request $request, $id)
     {
 
+        $rotafugas = Rotafuga::find($id);
+        $rotafugas->nome = Input::get('nome');
+        $rotafugas->instrucao = Input::get('instrucao');
+        $rotafugas->imagem = Input::get('imagem');
+        $rotafugas->sala_id = Input::get('sala_id');
+        $rotafugas->save();
 
-        $predio = Predio::find($id);
-        $predio->id = Input::get('id');
-        $predio->nome = Input::get('nome');
-        $predio->qtdandar = Input::get('qtdandar');
-        $predio->descricao = Input::get('descricao');
-        $predio->idpontoencontro = Input::get('idpontoencontro');
-        $predio->save();
-
-        return redirect()->route('alertas.index');
+        return redirect()->route('rotafugas.index');
     }
 
 
     public function destroy($id)
     {
 
-        $predio = Predio::find($id);
-        $predio->delete();
+        $rotafugas = Rotafuga::find($id);
+        $rotafugas->delete();
 
-        return redirect()->route('predios.index');
+        return redirect()->route('rotafugas.index');
     }
 }
+
+

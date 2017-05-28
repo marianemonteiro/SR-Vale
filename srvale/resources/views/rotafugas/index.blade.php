@@ -11,10 +11,11 @@
                 </div>
                 <table>
                     <tr>
+                        <td>ID</td>
                         <td>Nome</td>
                         <td>Instrução</td>
-                        <td>Salas</td>
                         <td>Imagem</td>
+                        <td>Visualizar</td>
                         <td>Editar</td>
                         <td>Excluir</td>
                     </tr>
@@ -24,8 +25,8 @@
                                 <td>{{ $item -> id }}</td>
                                 <td>{{ $item -> nome }}</td>
                                 <td>{{ $item -> instrucao }}</td>
-                                <td>{{ $item -> instrucao }}</td>
                                 <td>{{ $item -> imagem }}</td>
+                                <td class='excluir'><a href="{{route('rotafugas.show', ['id' =>$item->id])}}">Visualizar</a></td>
                                 <td class='editar'> <a href ="{{route('rotafugas.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('rotafugas.destroy', ['id' =>$item-> id])}}">

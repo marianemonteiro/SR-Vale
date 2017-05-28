@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Pontoencontro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class PontoencontrosController extends Controller
 {
@@ -28,7 +29,7 @@ class PontoencontrosController extends Controller
     {
         $pontoencontro = new Pontoencontro ();
         $pontoencontro->nome = Input::get('nome');
-        $pontoencontro -> descricao = Input::get('descricao');
+        $pontoencontro -> instrucao = Input::get('instrucao');
         $pontoencontro -> save();
 
         return redirect()->route('pontoencontros.index');
@@ -49,7 +50,7 @@ class PontoencontrosController extends Controller
         return view('pontoencontros.edit', [
             'id' => $pontoencontro->id,
             'nome' => $pontoencontro->nome,
-            'descricao' => $pontoencontro->descricao
+            'instrucao' => $pontoencontro->instrucao
         ]);
     }
 
@@ -60,7 +61,7 @@ class PontoencontrosController extends Controller
 
         $pontoencontro = Pontoencontro::find($id);
         $pontoencontro->nome = Input::get('nome');
-        $pontoencontro->descricao = Input::get('descricao');
+        $pontoencontro->instrucao = Input::get('instrucao');
         $pontoencontro->save();
 
         return redirect()->route('pontoencontros.index');

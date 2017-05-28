@@ -13,31 +13,82 @@
                     <input type="hidden" name="_method" value="PUT">
                     <fieldset>
                         <legend>Cliente: </legend>
-                        <input type="text" name="id_cliente" id="id_cliente" value="{{$id_cliente}}" required autofocus/>
+                        <input type="number" name="cliente_id" id="cliente_id" value="{{$cliente_id}}" required autofocus/>
                     </fieldset>
                     <fieldset>
                         <legend>Prioridade: </legend>
-                        <input type="text" name="prioridade" id="prioridade" value="{{$prioridade}}" required autofocus/>
+                        <select name="prioridade" id="prioridade" value="{{$prioridade}}" required autofocus/>
+                        @if($prioridade == "Baixo"){
+                        <option value="1" id="prioridade" selected>Baixo</option>
+                        <option value="0" id="prioridade">Médio</option>
+                        <option value="2" id="prioridade">Alto</option>
+                        }
+                        @elseif($prioridade == "Médio"){
+                        <option value="1" id="prioridade">Baixo</option>
+                        <option value="0" id="prioridade" selected>Médio</option>
+                        <option value="2" id="prioridade">Alto</option>
+                        }
+                        @else{
+                        <option value="1" id="prioridade">Baixo</option>
+                        <option value="0" id="prioridade">Médio</option>
+                        <option value="2" id="prioridade" selected>Alto</option>
+                        }
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Data: </legend>
                         <input type="date" name="data_criacao" id="data_criacao" value="{{$data_criacao}}" required autofocus/>
                     </fieldset>
                     <fieldset>
+                        <legend>Descrição: </legend>
+                        <input type="text" name="descricao" id="descricao" value="{{$descricao}}" required autofocus/>
+                    </fieldset>
+                    <fieldset>
                         <legend>Quantidade aprovadores: </legend>
-                        <input type="number" name="qtd_aprovadores" id="qtd_aprovadores" value="{{$qtd_aprovadores}}" required autofocus/>
+                        <input type="number" name="qtdaprovadores" id="qtdaprovadores" value="{{$qtdaprovadores}}" required autofocus/>
                     </fieldset>
                     <fieldset>
                         <legend>Tipo: </legend>
-                        <input type="text" name="tipo_alerta_id" id="tipo_alerta_id" value="{{$tipo_alerta_id}}" required autofocus/>
+                        <select name="tipoalerta_id" id="tipoalerta_id" required autofocus/>
+                        @if($tipoalertas->count() > 0)
+                            @foreach($tipoalertas as $tipoalerta)
+                                @if($tipoalerta_id == $tipoalerta->id)
+                                    <option value="{{$tipoalerta->id}}" selected >{{$tipoalerta->descricao}}</option>
+                                @else
+                                    <option value="{{$tipoalerta->id}}">{{$tipoalerta->descricao}}</option>
+                                @endif
+                            @endForeach
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Status: </legend>
-                        <input type="text" name="status_alerta_id" id="status_alerta_id" value="{{$status_alerta_id}}" required autofocus/>
+                        <select name="statusalerta_id" id="statusalerta_id" required autofocus/>
+                        @if($statusalertas->count() > 0)
+                            @foreach($statusalertas as $statusalerta)
+                                @if($statusalerta_id == $statusalerta->id)
+                                    <option value="{{$statusalerta->id}}" selected >{{$statusalerta->descricao}}</option>
+                                @else
+                                    <option value="{{$statusalerta->id}}">{{$statusalerta->descricao}}</option>
+                                @endif
+                            @endForeach
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Usuário: </legend>
-                        <input type="text" name="usuario_idusuario" id="usuario_idusuario" value="{{$tipo_usuario_id}}" required autofocus/>
+                        <select name="usuario_id" id="usuario_id" required autofocus/>
+                        @if($usuarios->count() > 0)
+                            @foreach($usuarios as $usuario)
+                                @if($usuario_id == $usuario->id)
+                                    <option value="{{$usuario->id}}" selected >{{$usuario->nome}}</option>
+                                @else
+                                    <option value="{{$usuario->id}}">{{$usuario->nome}}</option>
+                                @endif
+                            @endForeach
+                        @endif
+                        </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />

@@ -28,10 +28,6 @@ Route::resource('salas', 'SalasController');
 
 Route::resource('rotafugas', 'RotafugasController');
 
-
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

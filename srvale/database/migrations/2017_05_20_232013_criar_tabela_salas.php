@@ -19,8 +19,8 @@ class CriarTabelaSalas extends Migration
             $table->string('numero', 8);
             $table->string('andar', 45);
 
-            $table->integer('idpredio')->unsigned();
-            $table->foreign('idpredio')
+            $table->integer('predio_id')->unsigned();
+            $table->foreign('predio_id')
                 ->references('id')
                 ->on('predios')
                 ->onDelete('cascade');

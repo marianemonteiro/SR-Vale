@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Alerta;
+use App\Statusalerta;
+use App\Tipoalerta;
+use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -10,14 +13,28 @@ class AlertasController extends Controller
     public function index()
     {
         $alertas = Alerta::all();
-        return view('alertas.index',  ['alertas'=>$alertas]);
+        $tipoalertas = Tipoalerta::all();
+        $statusalertas = Statusalerta::all();
+        $usuarios = Usuario::all();
+        return view('alertas.index',  ['alertas'=>$alertas,
+                                        'tipoalertas' => $tipoalertas,
+                                        'statusalertas' => $statusalertas,
+                                        'usuarios' => $usuarios,
+                                        ]);
     }
 
 
     public function create()
     {
         $alertas = Alerta::all();
-        return view('alertas.criar',  ['alertas'=>$alertas]);
+        $tipoalertas = Tipoalerta::all();
+        $statusalertas = Statusalerta::all();
+        $usuarios = Usuario::all();
+        return view('alertas.criar',  ['alertas'=>$alertas,
+                                        'tipoalertas' => $tipoalertas,
+                                        'statusalertas' => $statusalertas,
+                                        'usuarios' => $usuarios,
+                                       ]);
     }
 
 
@@ -28,17 +45,19 @@ class AlertasController extends Controller
     public function store(Request $request)
     {
         $alerta = new Alerta ();
-        $alerta->razao = Input::get('razao');
+        $alerta -> cliente_id = Input::get('cliente_id');
         $alerta -> prioridade = Input::get('prioridade');
         $alerta -> data_criacao = Input::get('data_criacao');
         $alerta -> descricao = Input::get('descricao');
-        $alerta -> qtd_aprovadores = Input::get('qtd_aprovadores');
-        $alerta -> tipo_alerta_id = Input::get('tipo_alerta_id');
-        $alerta -> status_alerta_id = Input::get('status_alerta_id');
-        $alerta -> usuario_idusuario = Input::get('usuario_idusuario');
+        $alerta -> qtdaprovadores = Input::get('qtdaprovadores');
+        $alerta -> tipoalerta_id = Input::get('tipoalerta_id');
+        $alerta -> statusalerta_id = Input::get('statusalerta_id');
+        $alerta -> usuario_id = Input::get('usuario_id');
         $alerta -> save();
 
         return redirect()->route('alertas.index');
+
+
     }
 
 
@@ -53,17 +72,26 @@ class AlertasController extends Controller
     public function edit ($id)
     {
         $alerta = Alerta::find($id);
+        $tipoalertas = Tipoalerta::all();
+        $statusalertas = Statusalerta::all();
+        $usuarios = Usuario::all();
         return view('alertas.edit', [
             'id' => $alerta->id,
-            'id_cliente' => $alerta->id_cliente,
+            'cliente_id' => $alerta->cliente_id,
             'prioridade' => $alerta->prioridade,
             'data_criacao' => $alerta->data_criacao,
             'descricao' => $alerta->descricao,
-            'qtd_aprovadores' => $alerta->qtd_aprovadores,
-            'tipo_alerta_id' => $alerta->tipo_alerta_id,
-            'status_alerta_id' => $alerta->status_alerta_id,
-            'usuario_idusuario' => $alerta->usuario_idusuario
+            'qtdaprovadores' => $alerta->qtdaprovadores,
+            'tipoalerta_id' => $alerta->tipo_alerta_id,
+            'statusalerta_id' => $alerta->status_alerta_id,
+            'usuario_id' => $alerta->usuario_id,
+            'tipoalertas' => $tipoalertas,
+            'statusalertas' => $statusalertas,
+            'usuarios' => $usuarios
+
         ]);
+
+        //return response()->json($alerta);
     }
 
 
@@ -72,14 +100,14 @@ class AlertasController extends Controller
 
 
         $alerta = Alerta::find($id);
-        $alerta->id_cliente = Input::get('id_cliente');
+        $alerta->cliente_id = Input::get('cliente_id');
         $alerta->prioridade = Input::get('prioridade');
         $alerta->data_criacao = Input::get('data_criacao');
         $alerta->descricao = Input::get('descricao');
-        $alerta->qtd_aprovadores = Input::get('qtd_aprovadores');
-        $alerta->tipo_alerta_id = Input::get('tipo_alerta_id');
-        $alerta->status_alerta_id = Input::get('status_alerta_id');
-        $alerta->usuario_idusuario = Input::get('usuario_idusuario');
+        $alerta->qtdaprovadores = Input::get('qtdaprovadores');
+        $alerta->tipoalerta_id = Input::get('tipoalerta_id');
+        $alerta->statusalerta_id = Input::get('statusalerta_id');
+        $alerta->usuario_id = Input::get('usuario_id');
         $alerta->save();
 
         return redirect()->route('alertas.index');

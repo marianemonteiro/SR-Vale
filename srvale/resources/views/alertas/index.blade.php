@@ -11,9 +11,10 @@
                 </div>
                 <table>
                     <tr>
+                        <td>ID</td>
                         <td>Cliente</td>
                         <td>Prioridade</td>
-                        <td>Data</td>
+                        <td>Data de criação</td>
                         <td>Descrição</td>
                         <td>Quantidade de aprovadores</td>
                         <td>Tipo</td>
@@ -26,13 +27,14 @@
                         @forelse ($alertas as $item)
                             <tr>
                                 <td>{{ $item -> id }}</td>
-                                <td>{{ $item -> id_cliente }}</td>
+                                <td>{{ $item -> cliente_id }}</td>
                                 <td>{{ $item -> prioridade }}</td>
                                 <td>{{ $item -> data_criacao }}</td>
                                 <td>{{ $item -> descricao }}</td>
-                                <td>{{ $item -> tipo_alerta_id }}</td>
-                                <td>{{ $item -> status_alerta_id }}</td>
-                                <td>{{ $item -> usuario_idusuario }}</td>
+                                <td>{{ $item -> qtdaprovadores }}</td>
+                                <td>{{ $item -> tipoalerta -> descricao}}</td>
+                                <td>{{ $item -> statusalerta -> descricao }}</td>
+                                <td>{{ $item -> usuario -> nome }}</td>
                                 <td class='editar'> <a href ="{{route('alertas.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('alertas.destroy', ['id' =>$item-> id])}}">

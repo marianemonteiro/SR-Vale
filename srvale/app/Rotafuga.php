@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Rotafuga extends Model
 {
     public function salas(){
-        return $this -> hasMany(Sala::Class);
+        return $this -> belongsToMany(Sala::Class, 'rotafuga_salas');
     }
 }

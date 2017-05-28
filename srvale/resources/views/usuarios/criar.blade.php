@@ -27,16 +27,31 @@
                         <input type="password" name="senha" id="senha" required autofocus/>
                     </fieldset>
                     <fieldset>
-                        <legend>Bloqueado: </legend>
-                        <input type="text" name="bloqueado" id="bloqueado" required autofocus/>
+                        <legend>Status: </legend>
+                        <select name="bloqueado" id="bloqueado" required autofocus/>
+                        <option value="1" id="ativo">Ativo</option>
+                        <option value="0" id="ativo">Inativo</option>
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Sala: </legend>
-                        <input type="text" name="idsala" id="idsala" required autofocus/>
+                        <select name="sala_id" id="sala_id" required autofocus/>
+                        @if($salas->count() > 0)
+                            @foreach($salas as $sala)
+                                <option value="{{$sala->id}}">{{$sala->nome}}</option>
+                                @endForeach
+                                @endif
+                        </select>
                     </fieldset>
                     <fieldset>
-                        <legend>Tipo do usuário: </legend>
-                        <input type="text" name="tipo_usuario_id" id="tipo_usuario_id" required autofocus/>
+                        <legend>Tipo do Usuário: </legend>
+                        <select name="tipousuario_id" id="tipousuario_id" required autofocus/>
+                        @if($tipousuarios->count() > 0)
+                            @foreach($tipousuarios as $tipousuario)
+                                <option value="{{$tipousuario->id}}">{{$tipousuario->descricao}}</option>
+                                @endForeach
+                                @endif
+                        </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />

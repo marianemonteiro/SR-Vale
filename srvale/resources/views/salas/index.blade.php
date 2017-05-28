@@ -11,6 +11,7 @@
                 </div>
                 <table>
                     <tr>
+                        <td>ID</td>
                         <td>Nome</td>
                         <td>Numero</td>
                         <td>Andar</td>
@@ -25,7 +26,7 @@
                                 <td>{{ $item -> nome }}</td>
                                 <td>{{ $item -> numero }}</td>
                                 <td>{{ $item -> andar }}</td>
-                                <td>{{ $item -> idpredio }}</td>
+                                <td>{{ $item -> predio -> nome }}</td>
                                 <td class='editar'> <a href ="{{route('salas.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('salas.destroy', ['id' =>$item-> id])}}">
