@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Pontoencontro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class PontoencontrosController extends Controller
      */
     public function index()
     {
-        //
+        return Pontoencontro::All();
     }
 
     /**
@@ -24,7 +25,12 @@ class PontoencontrosController extends Controller
      */
     public function create()
     {
-        //
+        $pontoencontro = new Pontoencontro();
+
+        $pontoencontro->nome = Input::get('nome');
+        $pontoencontro->instrucao = Input::get('instrucao');
+        $pontoencontro->save();
+        return $pontoencontro;
     }
 
     /**
@@ -35,7 +41,11 @@ class PontoencontrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pontoencontro = new Pontoencontro();
+        $pontoencontro->nome = Input::get('nome');
+        $pontoencontro->instrucao = Input::get('instrucao');
+        $pontoencontro->save();
+        return $pontoencontro;
     }
 
     /**
@@ -46,7 +56,7 @@ class PontoencontrosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Pontoencontro::find($id);
     }
 
     /**
@@ -57,7 +67,12 @@ class PontoencontrosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pontoencontro = Pontoencontro::find($id);
+
+        if($pontoencontro) {
+            $pontoencontro->nome = Input::get('nome');
+            $pontoencontro->instrucao = Input::get('instrucao');
+        }
     }
 
     /**
@@ -69,7 +84,18 @@ class PontoencontrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pontoencontro = Pontoencontro::find($id);
+
+        if($pontoencontro){
+            $pontoencontro->nome = Input::get('nome');
+            $pontoencontro->instrucao = Input::get('instrucao');
+            $pontoencontro->save();
+            return $pontoencontro;
+        }
+
+        return response()->json([
+            'erro' => 'Ponto de encontro inexistente'
+        ]);
     }
 
     /**
@@ -80,6 +106,16 @@ class PontoencontrosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pontoencontro = Pontoencontro::find($id);
+
+        if($pontoencontro){
+            $pontoencontro->delete();
+            return response()->json([
+                'mensagem' => 'Ponto de encontro excluido'
+            ]);
+        }
+        return response()->json([
+            'erro' => 'Ponto de encontro inexistente'
+        ]);
     }
 }

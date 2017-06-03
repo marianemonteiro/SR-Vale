@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
+        return Usuario::All();
     }
 
     /**
@@ -24,7 +25,17 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        //
+        $usuario = new Usuario();
+
+        $usuario->nome = Input::get('nome');
+        $usuario->email = Input::get('email');
+        $usuario->cpf = Input::get('cpf');
+        $usuario->senha = Input::get('senha');
+        $usuario->bloqueado = Input::get('bloqueado');
+        $usuario->tipousuario_id = Input::get('tipousuario_id');
+        $usuario->sala_id = Input::get('sala_id');
+        $usuario->save();
+        return $usuario;
     }
 
     /**
@@ -35,7 +46,16 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->nome = Input::get('nome');
+        $usuario->email = Input::get('email');
+        $usuario->cpf = Input::get('cpf');
+        $usuario->senha = Input::get('senha');
+        $usuario->bloqueado = Input::get('bloqueado');
+        $usuario->tipousuario_id = Input::get('tipousuario_id');
+        $usuario->sala_id = Input::get('sala_id');
+        $usuario->save();
+        return $usuario;
     }
 
     /**
@@ -46,7 +66,7 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Usuario::find($id);
     }
 
     /**
@@ -57,7 +77,17 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = Usuario::find($id);
+
+        if($usuario) {
+            $usuario->nome = Input::get('nome');
+            $usuario->email = Input::get('email');
+            $usuario->cpf = Input::get('cpf');
+            $usuario->senha = Input::get('senha');
+            $usuario->bloqueado = Input::get('bloqueado');
+            $usuario->tipousuario_id = Input::get('tipousuario_id');
+            $usuario->sala_id = Input::get('sala_id');
+        }
     }
 
     /**
@@ -69,7 +99,23 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = Usuario::find($id);
+
+        if($usuario){
+            $usuario->nome = Input::get('nome');
+            $usuario->email = Input::get('email');
+            $usuario->cpf = Input::get('cpf');
+            $usuario->senha = Input::get('senha');
+            $usuario->bloqueado = Input::get('bloqueado');
+            $usuario->tipousuario_id = Input::get('tipousuario_id');
+            $usuario->sala_id = Input::get('sala_id');
+            $usuario->save();
+            return $usuario;
+        }
+
+        return response()->json([
+            'erro' => 'Usuario inexistente'
+        ]);
     }
 
     /**
@@ -80,6 +126,16 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = Usuario::find($id);
+
+        if($usuario){
+            $usuario->delete();
+            return response()->json([
+                'mensagem' => 'Usuario excluido'
+            ]);
+        }
+        return response()->json([
+            'erro' => 'Usuario inexistente'
+        ]);
     }
 }

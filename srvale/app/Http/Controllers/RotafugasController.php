@@ -27,6 +27,16 @@ class RotafugasController extends Controller
 
     public function store(Request $request)
     {
+        $imagem = $request->file('imagem');
+
+        $pasta = public_path() . '/imagens';
+
+        $nome_imagem = 'rota' . time() . '.' . $imagem->getClientOriginalExtension();
+
+        // Move arquivo para pasta
+        $nova_imagem = $imagem->move($pasta, $nome_imagem);
+
+
         $rotafugas = new Rotafuga();
         $rotafugas -> nome  = Input::get('nome');
         $rotafugas -> instrucao = Input::get('instrucao');

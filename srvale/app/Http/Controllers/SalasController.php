@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pontoencontro;
 use App\Predio;
 use App\Sala;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class SalasController extends Controller
     {
         $predios = Predio::all();
         $salas = Sala::all();
-        return view('salas.index',  ['salas'=>$salas, 'predios' => $predios]);
+        $pontoencontros = Pontoencontro::all();
+        return view('salas.index',  ['salas'=>$salas, 'predios' => $predios,'pontoencontros' => $pontoencontros]);
     }
 
 
@@ -21,7 +23,8 @@ class SalasController extends Controller
     {
         $predios = Predio::all();
         $salas = Sala::all();
-        return view('salas.criar',  ['salas'=>$salas, 'predios' => $predios]);
+        $pontoencontros = Pontoencontro::all();
+        return view('salas.criar',  ['salas'=>$salas, 'predios' => $predios,'pontoencontros' => $pontoencontros]);
     }
 
 
@@ -34,6 +37,9 @@ class SalasController extends Controller
         $salas -> predio_id = Input::get('predio_id');
         $salas -> save();
 
+        //Tabela intermediária, anexando
+        $salas -> rotafugas()->attach(Input::get('rotafuga_id'));
+
         return redirect()->route('salas.index');
     }
 
@@ -41,8 +47,8 @@ class SalasController extends Controller
     public function show($id)
     {
 
-        $sala = Sala::find($id);
-        return view('salas.detalhes', ['sala'=>$sala]);
+        $salas = Sala::find($id);
+        return view('salas.show', ['sala'=>$salas]);
     }
 
 

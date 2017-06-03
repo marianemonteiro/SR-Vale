@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Rotafuga;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class RotafugasController extends Controller
      */
     public function index()
     {
-        //
+        return Rotafuga::All();
     }
 
     /**
@@ -24,7 +25,13 @@ class RotafugasController extends Controller
      */
     public function create()
     {
-        //
+        $rotafuga = new Rotafuga();
+
+        $rotafuga->nome = Input::get('nome');
+        $rotafuga->instrucao = Input::get('instrucao');
+        $rotafuga->imagem = Input::get('imagem');
+        $rotafuga->save();
+        return $rotafuga;
     }
 
     /**
@@ -35,7 +42,12 @@ class RotafugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rotafuga = new Rotafuga();
+        $rotafuga->nome = Input::get('nome');
+        $rotafuga->instrucao = Input::get('instrucao');
+        $rotafuga->imagem = Input::get('imagem');
+        $rotafuga->save();
+        return $rotafuga;
     }
 
     /**
@@ -46,7 +58,7 @@ class RotafugasController extends Controller
      */
     public function show($id)
     {
-        //
+        return Rotafuga::find($id);
     }
 
     /**
@@ -57,7 +69,13 @@ class RotafugasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rotafuga = Rotafuga::find($id);
+
+        if($rotafuga) {
+            $rotafuga->nome = Input::get('nome');
+            $rotafuga->instrucao = Input::get('instrucao');
+            $rotafuga->imagem = Input::get('imagem');
+        }
     }
 
     /**
@@ -69,7 +87,19 @@ class RotafugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rotafuga = Rotafuga::find($id);
+
+        if($rotafuga){
+            $rotafuga->nome = Input::get('nome');
+            $rotafuga->instrucao = Input::get('instrucao');
+            $rotafuga->imagem = Input::get('imagem');
+            $rotafuga->save();
+            return $rotafuga;
+        }
+
+        return response()->json([
+            'erro' => 'Rota de fuga inexistente'
+        ]);
     }
 
     /**
@@ -80,6 +110,16 @@ class RotafugasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rotafuga = Rotafuga::find($id);
+
+        if($rotafuga){
+            $rotafuga->delete();
+            return response()->json([
+                'mensagem' => 'Rota de fuga excluido'
+            ]);
+        }
+        return response()->json([
+            'erro' => 'Rota de fuga inexistente'
+        ]);
     }
 }

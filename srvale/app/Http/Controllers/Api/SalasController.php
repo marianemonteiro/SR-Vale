@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Sala;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class SalasController extends Controller
      */
     public function index()
     {
-        //
+        return Sala::All();
     }
 
     /**
@@ -24,7 +25,14 @@ class SalasController extends Controller
      */
     public function create()
     {
-        //
+        $sala = new Sala();
+
+        $sala->nome = Input::get('nome');
+        $sala->numero = Input::get('numero');
+        $sala->andar = Input::get('andar');
+        $sala->predio_id = Input::get('predio_id');
+        $sala->save();
+        return $sala;
     }
 
     /**
@@ -35,7 +43,13 @@ class SalasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sala = new Sala();
+        $sala->nome = Input::get('nome');
+        $sala->numero = Input::get('numero');
+        $sala->andar = Input::get('andar');
+        $sala->predio_id = Input::get('predio_id');
+        $sala->save();
+        return $sala;
     }
 
     /**
@@ -46,7 +60,7 @@ class SalasController extends Controller
      */
     public function show($id)
     {
-        //
+        return Rotafuga::find($id);
     }
 
     /**
@@ -57,7 +71,14 @@ class SalasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sala = Sala::find($id);
+
+        if($sala) {
+            $sala->nome = Input::get('nome');
+            $sala->numero = Input::get('numero');
+            $sala->andar = Input::get('andar');
+            $sala->predio_id = Input::get('predio_id');
+        }
     }
 
     /**
@@ -69,7 +90,20 @@ class SalasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sala = Sala::find($id);
+
+        if($sala){
+            $sala->nome = Input::get('nome');
+            $sala->numero = Input::get('numero');
+            $sala->andar = Input::get('andar');
+            $sala->predio_id = Input::get('predio_id');
+            $sala->save();
+            return $sala;
+        }
+
+        return response()->json([
+            'erro' => 'Sala inexistente'
+        ]);
     }
 
     /**
@@ -80,6 +114,16 @@ class SalasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sala = Sala::find($id);
+
+        if($sala){
+            $sala->delete();
+            return response()->json([
+                'mensagem' => 'Sala excluida'
+            ]);
+        }
+        return response()->json([
+            'erro' => 'Sala inexistente'
+        ]);
     }
 }

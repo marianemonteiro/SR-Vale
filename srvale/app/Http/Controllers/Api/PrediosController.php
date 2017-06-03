@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Predio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class PrediosController extends Controller
      */
     public function index()
     {
-        //
+        return Predio::All();
     }
 
     /**
@@ -24,7 +25,15 @@ class PrediosController extends Controller
      */
     public function create()
     {
-        //
+        $predio = new Predio();
+
+        $predio->nome = Input::get('nome');
+        $predio->andar = Input::get('andar');
+        $predio->qtdandar = Input::get('qtdandar');
+        $predio->descricao = Input::get('descricao');
+        $predio->pontoencontro_id = Input::get('pontoencontro_id');
+        $predio->save();
+        return $predio;
     }
 
     /**
@@ -35,7 +44,14 @@ class PrediosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $predio = new Predio();
+        $predio->nome = Input::get('nome');
+        $predio->andar = Input::get('andar');
+        $predio->qtdandar = Input::get('qtdandar');
+        $predio->descricao = Input::get('descricao');
+        $predio->pontoencontro_id = Input::get('pontoencontro_id');
+        $predio->save();
+        return $predio;
     }
 
     /**
@@ -46,7 +62,7 @@ class PrediosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Predio::find($id);
     }
 
     /**
@@ -57,7 +73,15 @@ class PrediosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $predio = Predio::find($id);
+
+        if($predio) {
+            $predio->nome = Input::get('nome');
+            $predio->andar = Input::get('andar');
+            $predio->qtdandar = Input::get('qtdandar');
+            $predio->descricao = Input::get('descricao');
+            $predio->pontoencontro_id = Input::get('pontoencontro_id');
+        }
     }
 
     /**
@@ -69,7 +93,21 @@ class PrediosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $predio = Predio::find($id);
+
+        if($predio){
+            $predio->nome = Input::get('nome');
+            $predio->andar = Input::get('andar');
+            $predio->qtdandar = Input::get('qtdandar');
+            $predio->descricao = Input::get('descricao');
+            $predio->pontoencontro_id = Input::get('pontoencontro_id');
+            $predio->save();
+            return $predio;
+        }
+
+        return response()->json([
+            'erro' => 'Predio inexistente'
+        ]);
     }
 
     /**
@@ -80,6 +118,16 @@ class PrediosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $predio = Predio::find($id);
+
+        if($predio){
+            $predio->delete();
+            return response()->json([
+                'mensagem' => 'Predio excluido'
+            ]);
+        }
+        return response()->json([
+            'erro' => 'Predio inexistente'
+        ]);
     }
 }

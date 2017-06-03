@@ -7,7 +7,7 @@
         <input type="hidden" name="token" value="{{ csrf_token() }}">
             <section>
                 <div>
-                    <a href="{{route('alertas.create')}}"><div id="cadastrar">Cadastrar Alerta</div></a>
+
                 </div>
                 <table>
                     <tr>
