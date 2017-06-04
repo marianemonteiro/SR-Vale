@@ -22,22 +22,26 @@
                         </textarea>
                     </fieldset>
                     <fieldset>
+                        <legend>Imagem: </legend>
+                        <img width="250" src="/{{$caminhoimagem}}" name="imagem_old">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Atualizar imagem: </legend>
+                        <input type="file" name="imagem_new"/>
+                    </fieldset>
+                    <fieldset>
                         <legend>Sala: </legend>
-                        <select name="sala_id" id="sala_id" required autofocus/>
+                        <select name="sala_id" id="sala_id"  required autofocus/>
                         @if($salas->count() > 0)
                             @foreach($salas as $sala)
                                 @if($sala_id == $sala->id)
                                     <option value="{{$sala->id}}" selected >{{$sala->nome}}</option>
                                 @else
                                     <option value="{{$sala->id}}">{{$sala->nome}}</option>
-                                @endif
-                            @endForeach
-                        @endif
-                        </select>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Imagem: </legend>
-                        <input type="file" name="imagem" id="imagem" value="{{$imagem}}" required autofocus/>
+                                    @endif
+                                    @endForeach
+                                    @endif
+                                    </select>
                     </fieldset>
                     <fieldset class="botao">
                         <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />

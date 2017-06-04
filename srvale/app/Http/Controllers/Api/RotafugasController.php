@@ -30,6 +30,11 @@ class RotafugasController extends Controller
         $rotafuga->nome = Input::get('nome');
         $rotafuga->instrucao = Input::get('instrucao');
         $rotafuga->imagem = Input::get('imagem');
+
+        //Tabela intermediária, anexando
+        $rotafuga -> salas()->attach(Input::get('sala_id'));
+
+
         $rotafuga->save();
         return $rotafuga;
     }
@@ -93,6 +98,10 @@ class RotafugasController extends Controller
             $rotafuga->nome = Input::get('nome');
             $rotafuga->instrucao = Input::get('instrucao');
             $rotafuga->imagem = Input::get('imagem');
+
+            //Tabela intermediária, anexando
+            $rotafuga -> salas()->attach(Input::get('sala_id'));
+
             $rotafuga->save();
             return $rotafuga;
         }

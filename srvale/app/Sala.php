@@ -17,9 +17,8 @@ class Sala extends Model
     }
 
 
-    public function rotafuga(){
-        return $this -> belongsToMany(Rotafuga::Class, 'rotafuga_salas');
-    }
-
+    public function rotafugas(){
+    return $this -> belongsToMany(Rotafuga::Class, 'rotafuga_salas');
+}
 
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pontoencontro;
 use App\Predio;
+use App\Rotafuga;
 use App\Sala;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -37,9 +38,6 @@ class SalasController extends Controller
         $salas -> predio_id = Input::get('predio_id');
         $salas -> save();
 
-        //Tabela intermediária, anexando
-        $salas -> rotafuga()->attach(Input::get('rotafuga_id'));
-
 
         return redirect()->route('salas.index');
     }
@@ -49,7 +47,8 @@ class SalasController extends Controller
     {
 
         $salas = Sala::find($id);
-        return view('salas.show', ['sala'=>$salas]);
+        $rotafugas = Rotafuga::get();
+        return view('salas.show', ['sala'=>$salas,'rotafuga'=>$rotafugas ]);
     }
 
 

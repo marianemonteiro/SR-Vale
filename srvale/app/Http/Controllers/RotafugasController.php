@@ -49,7 +49,10 @@ class RotafugasController extends Controller
         $rotafugas -> caminhoimagem = $sub_var;
         $rotafugas -> save();
 
-        //return response()->json($rotafugas);
+        //Tabela intermediária, anexando
+        $rotafugas -> salas()->attach(Input::get('sala_id'));
+
+
 
         return redirect()->route('rotafugas.index');
     }
@@ -59,7 +62,7 @@ class RotafugasController extends Controller
     {
 
         $rotafugas = Rotafuga::find($id);
-        return view('rotafugas.show', ['rotafugas'=>$rotafugas]);
+        return view('rotafugas.show', ['rotafuga'=>$rotafugas]);
     }
 
 
@@ -67,11 +70,10 @@ class RotafugasController extends Controller
     {
         $rotafugas = Rotafuga::find($id);
         $salas = Sala::all();
-        return view('motoristas.edit', [
+        return view('rotafugas.edit', [
             'id' => $rotafugas->id,
             'nome' => $rotafugas->nome,
             'instrucao' => $rotafugas->instrucao,
-            'nomeimagem' => $rotafugas->nomeimagem,
             'caminhoimagem' => $rotafugas->caminhoimagem,
             'sala_id' => $rotafugas->sala_id,
             'salas' => $salas
@@ -82,13 +84,33 @@ class RotafugasController extends Controller
 
     public function update(Request $request, $id)
     {
+        $imagem = $request->file('imagem_new');
 
-        $rotafugas = Rotafuga::find($id);
-        $rotafugas->nome = Input::get('nome');
-        $rotafugas->instrucao = Input::get('instrucao');
-        $rotafugas->imagem = Input::get('imagem');
-        $rotafugas->sala_id = Input::get('sala_id');
-        $rotafugas->save();
+        $pasta = public_path() . '/imagens';
+
+        //Verificar porque está indo null
+        $nome_imagem = 'rota' . time() . '.' . $imagem->getClientOriginalExtension();
+
+        // Move arquivo para pasta
+        $nova_imagem = $imagem->move($pasta, $nome_imagem);
+
+        //Salva o caminho no banco
+        $path = storage_path('imagens/' . $nome_imagem);
+
+        //Modifica como vai salvar o arquivo no banco
+        $sub_var = substr($nova_imagem,41);
+
+        $rotafugas = Rotafuga::find ($id);
+        $rotafugas -> nome  = Input::get('nome');
+        $rotafugas -> instrucao = Input::get('instrucao');
+        $rotafugas -> nomeimagem = $nome_imagem;
+        $rotafugas -> caminhoimagem = $sub_var;
+        $rotafugas -> save();
+
+        //Tabela intermediária, anexando
+        $rotafugas -> salas()->attach(Input::get('sala_id'));
+
+
 
         return redirect()->route('rotafugas.index');
     }
@@ -98,6 +120,8 @@ class RotafugasController extends Controller
     {
 
         $rotafugas = Rotafuga::find($id);
+        unlink($rotafugas->caminhoimagem);
+        $rotafugas->delete();
         return redirect()->route('rotafugas.index');
     }
 }

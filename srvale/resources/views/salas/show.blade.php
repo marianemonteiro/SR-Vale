@@ -16,7 +16,7 @@
                 <td>Instrução</td>
             </tr>
 
-            @forelse ($sala -> rotafuga as $item)
+            @forelse ($sala -> rotafugas as $item)
                 <tr>
                     <td>{{ $item -> nome }}</td>
                     <td>{{ $item -> instrucao }}</td>

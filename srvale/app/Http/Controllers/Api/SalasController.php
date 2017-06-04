@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Rotafuga;
 use App\Sala;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,6 +50,7 @@ class SalasController extends Controller
         $sala->andar = Input::get('andar');
         $sala->predio_id = Input::get('predio_id');
         $sala->save();
+
         return $sala;
     }
 
@@ -60,7 +62,7 @@ class SalasController extends Controller
      */
     public function show($id)
     {
-        return Rotafuga::find($id);
+        return Sala::find($id);
     }
 
     /**
