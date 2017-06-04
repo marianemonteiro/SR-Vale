@@ -1,10 +1,10 @@
 @extends('layouts.principal')
 
-@section('titulo', 'Detalhes de Motoristas')
+@section('titulo', 'Detalhes de Salas')
 
 @section('conteudo')
     <section>
-    <h1>Detalhes da Sala - {{$sala -> nome}}</h1>
+    <h1>Detalhes de Rota de Fuga - {{$sala -> nome}}</h1>
     <input type="hidden" name="token" value="{{ csrf_token() }}">
     <section>
         <div>
@@ -16,7 +16,7 @@
                 <td>Instrução</td>
             </tr>
 
-            @forelse ($sala -> rotafugas as $item)
+            @forelse ($sala -> rotafuga as $item)
                 <tr>
                     <td>{{ $item -> nome }}</td>
                     <td>{{ $item -> instrucao }}</td>
@@ -24,7 +24,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="2">Nenhum rota de fuga encontrada.</td>
+                    <td colspan="2">Nenhuma rota de fuga encontrada.</td>
                 </tr>
             @endforelse
         </table>

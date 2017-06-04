@@ -37,17 +37,19 @@ class RotafugasController extends Controller
         $nova_imagem = $imagem->move($pasta, $nome_imagem);
 
         //Salva o caminho no banco
-        $path = storage_path('public/' . $nome_imagem);
+        $path = storage_path('imagens/' . $nome_imagem);
+
+        //Modifica como vai salvar o arquivo no banco
+        $sub_var = substr($nova_imagem,41);
 
         $rotafugas = new Rotafuga();
         $rotafugas -> nome  = Input::get('nome');
         $rotafugas -> instrucao = Input::get('instrucao');
         $rotafugas -> nomeimagem = $nome_imagem;
-        $rotafugas -> caminhoimagem = $nova_imagem->getPathname();
+        $rotafugas -> caminhoimagem = $sub_var;
         $rotafugas -> save();
 
-        //Tabela intermediária, anexando
-        $rotafugas -> salas()->attach(Input::get('sala_id'));
+        //return response()->json($rotafugas);
 
         return redirect()->route('rotafugas.index');
     }
@@ -96,8 +98,6 @@ class RotafugasController extends Controller
     {
 
         $rotafugas = Rotafuga::find($id);
-        $rotafugas->delete();
-
         return redirect()->route('rotafugas.index');
     }
 }

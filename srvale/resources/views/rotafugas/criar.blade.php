@@ -16,7 +16,7 @@
                     </fieldset>
                     <fieldset>
                         <legend>Instrução: </legend>
-                        <input type="text" name="instrucao" id="instrucao" required autofocus/>
+                        <textarea rows="10" cols="40" maxlength="500" name="instrucao" id="instrucao" required autofocus></textarea>
                     </fieldset>
                     <fieldset>
                         <legend>Imagem: </legend>

@@ -16,6 +16,7 @@
                         <td>Numero</td>
                         <td>Andar</td>
                         <td>Prédio</td>
+                        <td>Detalhes</td>
                         <td>Editar</td>
                         <td>Excluir</td>
                     </tr>
@@ -27,6 +28,7 @@
                                 <td>{{ $item -> numero }}</td>
                                 <td>{{ $item -> andar }}</td>
                                 <td>{{ $item -> predio -> nome }}</td>
+                                <td class='excluir'><a href="{{route('salas.show', ['id' =>$item->id])}}">Visualizar</a></td>
                                 <td class='editar'> <a href ="{{route('salas.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('salas.destroy', ['id' =>$item-> id])}}">

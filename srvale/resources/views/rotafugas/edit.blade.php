@@ -17,7 +17,9 @@
                     </fieldset>
                     <fieldset>
                         <legend>Instrução: </legend>
-                        <input type="text" name="instrucao" id="instrucao" value="{{$instrucao}}" required autofocus/>
+                        <textarea rows="10" cols="40" maxlength="500"
+                                  name="instrucao" id="instrucao"   requiered autofocus>{{$instrucao}}
+                        </textarea>
                     </fieldset>
                     <fieldset>
                         <legend>Sala: </legend>
