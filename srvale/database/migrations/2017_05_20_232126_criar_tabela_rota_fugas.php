@@ -17,7 +17,8 @@ class CriarTabelaRotaFugas extends Migration
             $table->increments('id');
             $table->string('nome', 255);
             $table->string('instrucao', 255);
-            $table->binary('imagem', 255);
+            $table->binary('nomeimagem', 255);
+            $table->string('caminhoimagem', 255);
             $table->timestamps();
         });
     }

@@ -16,7 +16,6 @@
                         <td>Numero</td>
                         <td>Andar</td>
                         <td>Prédio</td>
-                        <td>Visualizar</td>
                         <td>Editar</td>
                         <td>Excluir</td>
                     </tr>

@@ -37,9 +37,6 @@ class SalasController extends Controller
         $salas -> predio_id = Input::get('predio_id');
         $salas -> save();
 
-        //Tabela intermediária, anexando
-        $salas -> rotafugas()->attach(Input::get('rotafuga_id'));
-
         return redirect()->route('salas.index');
     }
 

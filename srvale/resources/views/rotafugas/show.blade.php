@@ -26,7 +26,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="2">Nenhum sala encontrada.</td>
+                    <td colspan="2">Nenhuma sala encontrada.</td>
                 </tr>
             @endforelse
         </table>

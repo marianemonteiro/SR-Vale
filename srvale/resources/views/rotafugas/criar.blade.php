@@ -6,22 +6,6 @@
 
     <h1> Cadastro de Rota de Fuga </h1>
 
-    @if (session('erro'))
-        <div class="alert alert-danger">
-            {{ session('erro') }}
-        </div>
-    @endif
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
         <section>
             <div class="formulario">
                 <form method="post" action="{{ route('rotafugas.store') }}" enctype="multipart/form-data">

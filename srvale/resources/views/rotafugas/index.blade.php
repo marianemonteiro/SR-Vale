@@ -15,6 +15,7 @@
                         <td>Nome</td>
                         <td>Instrução</td>
                         <td>Imagem</td>
+                        <td>Caminho da imagem</td>
                         <td>Visualizar</td>
                         <td>Editar</td>
                         <td>Excluir</td>
@@ -25,7 +26,8 @@
                                 <td>{{ $item -> id }}</td>
                                 <td>{{ $item -> nome }}</td>
                                 <td>{{ $item -> instrucao }}</td>
-                                <td>{{ $item -> imagem }}</td>
+                                <td><img width="100" src="/home/vagrant/Code/SR-Vale/srvale/public/imagens/{{ $item -> nomeimagem }}"></td>
+                                <td>{{ $item -> caminhoimagem }}</td>
                                 <td class='excluir'><a href="{{route('rotafugas.show', ['id' =>$item->id])}}">Visualizar</a></td>
                                 <td class='editar'> <a href ="{{route('rotafugas.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
