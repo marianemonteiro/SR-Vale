@@ -27,7 +27,7 @@
                     </fieldset>
                     <fieldset>
                         <legend>Atualizar imagem: </legend>
-                        <input type="file" name="imagem_new"/>
+                        <input type="file" name="imagem" id="imagem"/>
                     </fieldset>
                     <fieldset>
                         <legend>Sala: </legend>

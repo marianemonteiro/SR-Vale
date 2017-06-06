@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Predio;
+use App\Sala;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,11 @@ class PrediosController extends Controller
     public function index()
     {
         return Predio::All();
+    }
+
+    public function salas($id)
+    {
+        return Sala::get() -> where ('predio_id', $id);
     }
 
     /**

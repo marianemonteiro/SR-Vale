@@ -32,7 +32,10 @@
                     </fieldset>
                     <fieldset>
                         <legend>Quantidade de aprovadores: </legend>
-                        <input type="number" name="qtdaprovadores" id="qtdaprovadores" required autofocus/>
+                        <select name="qtdaprovadores" id="qtdaprovadores" required autofocus/>
+                        <option value="1" id="ativo">Aprovado</option>
+                        <option value="0" id="ativo">Desaprovado</option>
+                        </select>
                     </fieldset>
                     <fieldset>
                         <legend>Tipo de alerta: </legend>

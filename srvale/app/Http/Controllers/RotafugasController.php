@@ -84,7 +84,9 @@ class RotafugasController extends Controller
 
     public function update(Request $request, $id)
     {
-        $imagem = $request->file('imagem_new');
+        $imagem = $request->file('imagem');
+
+        var_dump($imagem);
 
         $pasta = public_path() . '/imagens';
 
@@ -92,13 +94,13 @@ class RotafugasController extends Controller
         $nome_imagem = 'rota' . time() . '.' . $imagem->getClientOriginalExtension();
 
         // Move arquivo para pasta
-        $nova_imagem = $imagem->move($pasta, $nome_imagem);
+        $imagem = $imagem->move($pasta, $nome_imagem);
 
         //Salva o caminho no banco
         $path = storage_path('imagens/' . $nome_imagem);
 
         //Modifica como vai salvar o arquivo no banco
-        $sub_var = substr($nova_imagem,41);
+        $sub_var = substr($imagem,41);
 
         $rotafugas = Rotafuga::find ($id);
         $rotafugas -> nome  = Input::get('nome');
