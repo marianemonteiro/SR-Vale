@@ -10,4 +10,9 @@ class Tipomensagen extends Model
 
         return $this -> hasMany(Alerta::Class);
     }
+
+    public function mensagen(){
+
+        return $this -> hasOne(Mensagen::Class);
+    }
 }

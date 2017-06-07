@@ -25,6 +25,11 @@ class Usuario extends Model
         return $this -> belongsTo(Sala::Class);
     }
 
+    public function mensagen(){
+
+        return $this -> hasOne(Mensagen::Class);
+    }
+
     public function tipousuario(){
 
     return $this -> belongsTo(Tipousuario::Class);

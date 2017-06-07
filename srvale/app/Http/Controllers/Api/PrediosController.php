@@ -21,7 +21,8 @@ class PrediosController extends Controller
 
     public function salas($id)
     {
-        return Sala::get() -> where ('predio_id', $id);
+        $predios = Predio::find($id);
+        return $predios-> salas;
     }
 
     /**

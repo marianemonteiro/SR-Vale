@@ -19,6 +19,7 @@
                         <td>Quantidade de aprovadores</td>
                         <td>Tipo</td>
                         <td>Status</td>
+                        <td>Mensagem</td>
                         <td>Editar</td>
                         <td>Excluir</td>
                     </tr>
@@ -33,6 +34,7 @@
                                 <td>{{ $item -> qtdaprovadores }}</td>
                                 <td>{{ $item -> tipoalerta -> descricao}}</td>
                                 <td>{{ $item -> statusalerta -> descricao }}</td>
+                                <td class='editar'> <a href ="{{route('mensagens.create', ['alerta_id' =>$item-> id])}}">Responder</a></td>
                                 <td class='editar'> <a href ="{{route('alertas.edit', ['id' =>$item-> id])}}">Editar</a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('alertas.destroy', ['id' =>$item-> id])}}">

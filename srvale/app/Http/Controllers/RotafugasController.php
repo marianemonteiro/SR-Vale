@@ -86,8 +86,6 @@ class RotafugasController extends Controller
     {
         $imagem = $request->file('imagem');
 
-        var_dump($imagem);
-
         $pasta = public_path() . '/imagens';
 
         //Verificar porque está indo null
@@ -108,11 +106,6 @@ class RotafugasController extends Controller
         $rotafugas -> nomeimagem = $nome_imagem;
         $rotafugas -> caminhoimagem = $sub_var;
         $rotafugas -> save();
-
-        //Tabela intermediária, anexando
-        $rotafugas -> salas()->attach(Input::get('sala_id'));
-
-
 
         return redirect()->route('rotafugas.index');
     }

@@ -8,7 +8,7 @@
 
         <section>
             <div class="formulario">
-                <form method="post" action="{{ route('rotafugas.update', ['id' => $id]) }}">
+                <form method="post" action="{{ route('rotafugas.update', ['id' => $id]) }}" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PUT">
                     <fieldset>

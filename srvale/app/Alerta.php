@@ -21,6 +21,10 @@ class Alerta extends Model
         return $this -> belongsTo(Tipoalerta::Class);
     }
 
+    public function mensagen(){
+
+        return $this -> hasOne(Mensagen::Class);
+    }
 
     public function usuario(){
 
