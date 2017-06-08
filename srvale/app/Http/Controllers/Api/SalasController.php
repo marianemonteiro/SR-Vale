@@ -19,6 +19,19 @@ class SalasController extends Controller
         return Sala::All();
     }
 
+    public function pontoencontro($id)
+    {
+        $salas = Sala::find($id);
+        return $salas-> predio -> pontoencontro;
+    }
+
+    public function rotafuga($id)
+    {
+        $salas = Sala::find($id);
+        return $salas-> rotafugas;
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

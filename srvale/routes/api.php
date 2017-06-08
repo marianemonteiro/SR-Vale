@@ -56,6 +56,8 @@ Route::group(['namespace' => 'Api'], function(){
     Route::get('salas', 'SalasController@index');
     Route::post('salas', 'SalasController@store');
     Route::get('salas/{sala}', 'SalasController@show');
+    Route::get('salas/{sala}/pontoencontro', 'SalasController@pontoencontro');
+    Route::get('salas/{sala}/rotafuga', 'SalasController@rotafuga');
     Route::put('salas/{sala}', 'SalasController@update');
     Route::delete('salas/{sala}', 'SalasController@destroy');
 
