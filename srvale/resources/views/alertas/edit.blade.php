@@ -107,7 +107,7 @@
                         </select>
                     </div>
                     <div>
-                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Atualizar"/>Atualizar</button>
+                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Atualizar</button>
                     </div>
                 </form>
         </section>

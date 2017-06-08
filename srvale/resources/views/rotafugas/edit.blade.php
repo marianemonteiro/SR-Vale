@@ -12,6 +12,10 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
+                        <label for="imagem" ></label>
+                        <p align="center"><img width="250" src="/{{$caminhoimagem}}" name="imagem_old"></p>
+                    </div>
+                    <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" class="form-control" id="nome" value="{{$nome}}" required autofocus/>
                     </div>
@@ -20,14 +24,6 @@
                         <textarea rows="10" cols="40" maxlength="500"
                                   name="instrucao" id="instrucao"  class="form-control" requiered autofocus>{{$instrucao}}
                         </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="imagem">imagem</label>
-                        <img width="250" src="/{{$caminhoimagem}}" name="imagem_old" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="imagem">Atualizar imagem</label>
-                        <input type="file" name="imagem" id="imagem" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label for="sala_id">Sala</label>
@@ -43,8 +39,12 @@
                                     @endif
                                     </select>
                     </div>
+                    <div class="form-group">
+                        <label for="imagem">Atualizar imagem</label>
+                        <input type="file" name="imagem" id="imagem" class="form-control"/>
+                    </div>
                     <div>
-                        <button style ="margin-bottom:10px" type="button" class="btn btn-primary" name="salvar" value="Atualizar"/>Atualizar</button>
+                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Atualizar</button>
                     </div>
                 </form>
             </div>

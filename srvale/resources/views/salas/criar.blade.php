@@ -32,8 +32,7 @@
                          </select>
                      </div>
                     <div>
-                        <button style ="margin-bottom:10px"  type="button" class="btn btn-primary" name="salvar" value="Cadastrar"/>Cadastrar</button>
-
+                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Cadastrar</button>
                     </div>
                 </form>
             </div>

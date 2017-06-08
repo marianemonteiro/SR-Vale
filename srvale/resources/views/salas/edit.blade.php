@@ -38,7 +38,7 @@
                          </select>
                     </div>
                     <div>
-                        <button style ="margin-bottom:10px"  type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Atualizar Cadastro</button>
+                        <button style ="margin-bottom:10px"  type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Atualizar</button>
                     </div>
                 </form>
             </div>
