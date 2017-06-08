@@ -46,7 +46,22 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request -> json() -> all();
         $usuario = new Usuario();
+
+        $usuario -> nome = $data['nome'];
+        $usuario -> email = $data['email'];
+        $usuario -> cpf = $data['cpf'];
+        $usuario -> senha = $data['senha'];
+        $usuario -> bloqueado = $data['bloqueado'];
+        $usuario -> tipousuario_id = $data['tipousuario_id'];
+        $usuario -> sala_id = $data['sala_id'];
+        $usuario -> save();
+        
+        return $usuario;
+
+        /*
+         $usuario = new Usuario();
         $usuario->nome = Input::get('nome');
         $usuario->email = Input::get('email');
         $usuario->cpf = Input::get('cpf');
@@ -56,6 +71,7 @@ class UsuariosController extends Controller
         $usuario->sala_id = Input::get('sala_id');
         $usuario->save();
         return $usuario;
+        */
     }
 
     /**
