@@ -16,8 +16,8 @@
                     <div class="form-group">
                         <label for="prioridade">Prioridade</label>
                         <select name="prioridade" id="prioridade" class="form-control" required autofocus/>
-                        <option value="1" id="prioridade">Baixo</option>
-                        <option value="0" id="prioridade">Médio</option>
+                        <option value="0" id="prioridade">Baixo</option>
+                        <option value="1" id="prioridade">Médio</option>
                         <option value="2" id="prioridade">Alto</option>
                         </select>
                     </div>
@@ -33,9 +33,9 @@
                     <div class="form-group">
                         <label for="qtdaprovadores">Quantidade de aprovadores</label>
                         <select name="qtdaprovadores" id="qtdaprovadores" class="form-control" required autofocus/>
-                            <option value="0" id="qtdaprovadores">Primeira aprovação</option>
-                            <option value="1" id="qtdaprovadores">Segunda aprovação</option>
-                            <option value="2" id="qtdaprovadores">Terceira aprovação</option>
+                            <option value="1" id="qtdaprovadores">Primeira aprovação</option>
+                            <option value="2" id="qtdaprovadores">Segunda aprovação</option>
+                            <option value="3" id="qtdaprovadores">Terceira aprovação</option>
                         </select>
                     </div>
                     <div class="form-group">

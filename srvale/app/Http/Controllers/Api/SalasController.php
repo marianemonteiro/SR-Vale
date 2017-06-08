@@ -44,12 +44,14 @@ class SalasController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request -> json() -> all();
         $sala = new Sala();
-        $sala->nome = Input::get('nome');
-        $sala->numero = Input::get('numero');
-        $sala->andar = Input::get('andar');
-        $sala->predio_id = Input::get('predio_id');
-        $sala->save();
+
+        $sala -> nome = $data['nome'];
+        $sala -> numero = $data['numero'];
+        $sala -> andar = $data['andar'];
+        $sala -> predio_id = $data['predio_id'];
+        $sala -> save();
 
         return $sala;
     }
@@ -73,6 +75,8 @@ class SalasController extends Controller
      */
     public function edit($id)
     {
+
+
         $sala = Sala::find($id);
 
         if($sala) {

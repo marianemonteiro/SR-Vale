@@ -57,22 +57,12 @@ class UsuariosController extends Controller
         $usuario -> tipousuario_id = $data['tipousuario_id'];
         $usuario -> sala_id = $data['sala_id'];
         $usuario -> save();
-        
+
         return $usuario;
 
-        /*
-         $usuario = new Usuario();
-        $usuario->nome = Input::get('nome');
-        $usuario->email = Input::get('email');
-        $usuario->cpf = Input::get('cpf');
-        $usuario->senha = Input::get('senha');
-        $usuario->bloqueado = Input::get('bloqueado');
-        $usuario->tipousuario_id = Input::get('tipousuario_id');
-        $usuario->sala_id = Input::get('sala_id');
-        $usuario->save();
-        return $usuario;
-        */
     }
+
+
 
     /**
      * Display the specified resource.

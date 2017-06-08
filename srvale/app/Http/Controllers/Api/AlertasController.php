@@ -46,15 +46,18 @@ class AlertasController extends Controller
      */
     public function store(Request $request)
     {
-        $alerta = new Alerta();
-        $alerta->cliente_id = Input::get('cliente_id');
-        $alerta->prioridade = Input::get('prioridade');
-        $alerta->data_criacao = Input::get('data_criacao');
-        $alerta->qtdaprovadores = Input::get('qtdaprovadores');
-        $alerta->tipoalerta_id = Input::get('tipoalerta_id');
-        $alerta->stausalerta_id = Input::get('stausalerta_id');
-        $alerta->usuario_id = Input::get('usuario_id');
-        $alerta->save();
+        $data = $request -> json() -> all();
+        $alerta = new Pontoencontro();
+
+        $alerta -> cliente_id = $data['cliente_id'];
+        $alerta -> prioridade = 2;
+        $alerta -> data_criacao = date();
+        $alerta -> qtdaprovadores = 0;
+        $alerta -> tipoalerta_id = 1;
+        $alerta -> statusalerta_id = 1;
+        $alerta -> usuario_id = 1;
+        $alerta -> save();
+
         return $alerta;
     }
 

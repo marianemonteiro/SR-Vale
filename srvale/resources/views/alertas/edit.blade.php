@@ -18,18 +18,18 @@
                         <label for="prioridade">Prioridade</label>
                         <select name="prioridade" id="prioridade" value="{{$prioridade}}" class="form-control" required autofocus/>
                         @if($prioridade == "Baixo"){
-                        <option value="1" id="prioridade" selected>Baixo</option>
-                        <option value="0" id="prioridade">Médio</option>
+                        <option value="0" id="prioridade" selected>Baixo</option>
+                        <option value="1" id="prioridade">Médio</option>
                         <option value="2" id="prioridade">Alto</option>
                         }
                         @elseif($prioridade == "Médio"){
-                        <option value="1" id="prioridade">Baixo</option>
-                        <option value="0" id="prioridade" selected>Médio</option>
+                        <option value="0" id="prioridade">Baixo</option>
+                        <option value="1" id="prioridade" selected>Médio</option>
                         <option value="2" id="prioridade">Alto</option>
                         }
                         @else{
-                        <option value="1" id="prioridade">Baixo</option>
-                        <option value="0" id="prioridade">Médio</option>
+                        <option value="0" id="prioridade">Baixo</option>
+                        <option value="1" id="prioridade">Médio</option>
                         <option value="2" id="prioridade" selected>Alto</option>
                         }
                         @endif
@@ -45,23 +45,23 @@
                     </div>
                     <div class="form-group">
                         <label for="qtdaprovadores">Quantidade de aprovadores</label>
-                            <select name="qtdaprovadores" id="qtdaprovadores" value="{{$qtdaprovadores}}" class="form-control" required autofocus/>
-                            @if($qtdaprovadores == 1){
+                        <select name="qtdaprovadores" id="qtdaprovadores" value="{{$qtdaprovadores}}" class="form-control" required autofocus/>
+                        @if($qtdaprovadores == "Primeira aprovação"){
                             <option value="1" id="qtdaprovadores" selected>Primeira aprovação</option>
                             <option value="2" id="qtdaprovadores">Segunda aprovação</option>
                             <option value="3" id="qtdaprovadores">Terceira aprovação</option>
-                            }
-                            @elseif($qtdaprovadores == 2){
+                        }
+                        @elseif($qtdaprovadores == "Segunda aprovação"){
                             <option value="1" id="qtdaprovadores">Primeira aprovação</option>
                             <option value="2" id="qtdaprovadores" selected>Segunda aprovação</option>
                             <option value="3" id="qtdaprovadores">Terceira aprovação</option>
-                            }
-                            @else{
+                        }
+                        @else{
                             <option value="1" id="qtdaprovadores">Primeira aprovação</option>
                             <option value="2" id="qtdaprovadores">Segunda aprovação</option>
                             <option value="3" id="qtdaprovadores" selected>Terceira aprovação</option>
-                            }
-                            @endif
+                        }
+                        @endif
                         </select>
                     </div>
                     <div class="form-group">

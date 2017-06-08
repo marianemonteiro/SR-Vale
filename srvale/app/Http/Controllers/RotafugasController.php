@@ -98,7 +98,7 @@ class RotafugasController extends Controller
         $path = storage_path('imagens/' . $nome_imagem);
 
         //Modifica como vai salvar o arquivo no banco
-        $sub_var = substr($imagem,41);
+        $sub_var = substr($imagem,36);
 
         $rotafugas = Rotafuga::find ($id);
         $rotafugas -> nome  = Input::get('nome');

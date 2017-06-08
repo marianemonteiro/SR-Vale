@@ -41,11 +41,15 @@ class PontoencontrosController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request -> json() -> all();
         $pontoencontro = new Pontoencontro();
-        $pontoencontro->nome = Input::get('nome');
-        $pontoencontro->instrucao = Input::get('instrucao');
-        $pontoencontro->save();
+
+        $pontoencontro -> nome = $data['nome'];
+        $pontoencontro -> instrucao = $data['instrucao'];
+        $pontoencontro -> save();
+
         return $pontoencontro;
+
     }
 
     /**

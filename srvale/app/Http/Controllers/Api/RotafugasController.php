@@ -47,12 +47,16 @@ class RotafugasController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request -> json() -> all();
         $rotafuga = new Rotafuga();
-        $rotafuga->nome = Input::get('nome');
-        $rotafuga->instrucao = Input::get('instrucao');
-        $rotafuga->imagem = Input::get('imagem');
-        $rotafuga->save();
+
+        $rotafuga -> nome = $data['nome'];
+        $rotafuga -> instrucao = $data['instrucao'];
+        $rotafuga -> imagem = $data['imagem'];
+        $rotafuga -> save();
+
         return $rotafuga;
+
     }
 
     /**

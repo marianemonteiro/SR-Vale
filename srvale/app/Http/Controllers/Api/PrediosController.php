@@ -51,13 +51,16 @@ class PrediosController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request -> json() -> all();
         $predio = new Predio();
-        $predio->nome = Input::get('nome');
-        $predio->andar = Input::get('andar');
-        $predio->qtdandar = Input::get('qtdandar');
-        $predio->descricao = Input::get('descricao');
-        $predio->pontoencontro_id = Input::get('pontoencontro_id');
-        $predio->save();
+
+        $predio -> nome = $data['nome'];
+        $predio -> andar = $data['andar'];
+        $predio -> qtdandar = $data['qtdandar'];
+        $predio -> descricao = $data['descricao'];
+        $predio -> pontoencontro_id = $data['pontoencontro_id'];
+        $predio -> save();
+
         return $predio;
     }
 
