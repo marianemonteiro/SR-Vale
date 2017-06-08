@@ -46,20 +46,20 @@
                     <div class="form-group">
                         <label for="qtdaprovadores">Quantidade de aprovadores</label>
                             <select name="qtdaprovadores" id="qtdaprovadores" value="{{$qtdaprovadores}}" class="form-control" required autofocus/>
-                            @if($prioridade == "Baixo"){
+                            @if($qtdaprovadores == 1){
                             <option value="1" id="qtdaprovadores" selected>Primeira aprovação</option>
                             <option value="2" id="qtdaprovadores">Segunda aprovação</option>
                             <option value="3" id="qtdaprovadores">Terceira aprovação</option>
                             }
-                            @elseif($prioridade == "Médio"){
-                            <option value="1" id="prioridade">Baixo</option>
-                            <option value="0" id="prioridade" selected>Médio</option>
-                            <option value="2" id="prioridade">Alto</option>
+                            @elseif($qtdaprovadores == 2){
+                            <option value="1" id="qtdaprovadores">Primeira aprovação</option>
+                            <option value="2" id="qtdaprovadores" selected>Segunda aprovação</option>
+                            <option value="3" id="qtdaprovadores">Terceira aprovação</option>
                             }
                             @else{
-                            <option value="1" id="prioridade">Baixo</option>
-                            <option value="0" id="prioridade">Médio</option>
-                            <option value="2" id="prioridade" selected>Alto</option>
+                            <option value="1" id="qtdaprovadores">Primeira aprovação</option>
+                            <option value="2" id="qtdaprovadores">Segunda aprovação</option>
+                            <option value="3" id="qtdaprovadores" selected>Terceira aprovação</option>
                             }
                             @endif
                         </select>

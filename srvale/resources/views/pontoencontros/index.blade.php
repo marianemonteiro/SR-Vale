@@ -7,7 +7,7 @@
         <input type="hidden" name="token" value="{{ csrf_token() }}">
         <section>
 
-            <a href="{{route('pontoencontros.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Ponto de encontro</button></a>
+            <a href="{{route('pontoencontros.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Cadastrar Ponto de encontro</button></a>
         </section>
                 <table class="table table-striped">
                     <tr>

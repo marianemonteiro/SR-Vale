@@ -33,9 +33,9 @@
                     <div class="form-group">
                         <label for="qtdaprovadores">Quantidade de aprovadores</label>
                         <select name="qtdaprovadores" id="qtdaprovadores" class="form-control" required autofocus/>
-                            <option value="0" id="ativo">Primeira aprovação</option>
-                            <option value="1" id="ativo">Segunda aprovação</option>
-                            <option value="2" id="ativo">Terceira aprovação</option>
+                            <option value="0" id="qtdaprovadores">Primeira aprovação</option>
+                            <option value="1" id="qtdaprovadores">Segunda aprovação</option>
+                            <option value="2" id="qtdaprovadores">Terceira aprovação</option>
                         </select>
                     </div>
                     <div class="form-group">
