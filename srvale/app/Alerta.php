@@ -34,4 +34,8 @@ class Alerta extends Model
     public function getPrioridadeAttribute ($value){
         return $value == 0 ? 'Baixo' : ($value == 1 ? 'Médio' : 'Alto');
     }
+
+    public function getQtdaprovadoresAttribute ($value){
+        return $value == 1 ? 'Primeira aprovação' : ($value == 2 ? 'Segunda aprovação' : 'Terceira aprovação');
+    }
 }
