@@ -6,10 +6,10 @@
     <h1>Painel de Controle de Alertas</h1>
         <input type="hidden" name="token" value="{{ csrf_token() }}">
             <section>
-                <div>
-                    <a href="{{route('alertas.create')}}"><div id="cadastrar">Cadastrar Alerta</div></a>
-                </div>
-                <table>
+                <section>
+                    <a href="{{route('alertas.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Cadastrar Alerta</button></a>
+                </section>
+                <table class="table table-striped">
                     <tr>
                         <td>ID</td>
                         <td>Usuário</td>
@@ -34,13 +34,15 @@
                                 <td>{{ $item -> qtdaprovadores }}</td>
                                 <td>{{ $item -> tipoalerta -> descricao}}</td>
                                 <td>{{ $item -> statusalerta -> descricao }}</td>
-                                <td class='editar'> <a href ="{{route('mensagens.create', ['alerta_id' =>$item-> id])}}">Responder</a></td>
-                                <td class='editar'> <a href ="{{route('alertas.edit', ['id' =>$item-> id])}}">Editar</a></td>
+                                <td><a href="{{route('mensagens.create', ['alerta_id' =>$item->id])}}"><span class="glyphicon glyphicon-comment"></span></a></td>
+                                <td><a href="{{route('alertas.edit', ['alerta_id' =>$item->id])}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('alertas.destroy', ['id' =>$item-> id])}}">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input class= "botao_excluir" type="submit" name="excluir" value="Excluir">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                     </form>
                                 </td>
 

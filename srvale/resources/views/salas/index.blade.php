@@ -3,13 +3,13 @@
 @section('titulo', 'Painel de Controle de Salas')
 
 @section('conteudo')
-    <h1>Painel de Controle de Salas</h1>
+    <h1 xmlns="http://www.w3.org/1999/html">Painel de Controle de Salas</h1>
         <input type="hidden" name="token" value="{{ csrf_token() }}">
             <section>
-                <div>
-                    <a href="{{route('salas.create')}}"><div id="cadastrar">Cadastrar Sala</div></a>
-                </div>
-                <table>
+
+                <a href="{{route('salas.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Cadastrar Sala</button></a>
+            </section>
+                <table class="table table-striped">
                     <tr>
                         <td>ID</td>
                         <td>Nome</td>
@@ -28,13 +28,15 @@
                                 <td>{{ $item -> numero }}</td>
                                 <td>{{ $item -> andar }}</td>
                                 <td>{{ $item -> predio -> nome }}</td>
-                                <td class='excluir'><a href="{{route('salas.show', ['id' =>$item->id])}}">Visualizar</a></td>
-                                <td class='editar'> <a href ="{{route('salas.edit', ['id' =>$item-> id])}}">Editar</a></td>
+                                <td><a href="{{route('salas.show', ['id' =>$item->id])}}"><span class="glyphicon glyphicon-search"></span></a></td>
+                                <td><a href="{{route('salas.edit', ['id' =>$item->id])}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('salas.destroy', ['id' =>$item-> id])}}">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input class= "botao_excluir" type="submit" name="excluir" value="Excluir">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                     </form>
                                 </td>
 

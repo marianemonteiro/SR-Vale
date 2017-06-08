@@ -7,70 +7,70 @@
     <h1> Cadastro de Alertas </h1>
 
         <section>
-            <div class="formulario">
                 <form method="post" action="{{ route('alertas.store') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <fieldset>
-                        <legend>Cliente: </legend>
-                        <input type="number" name="cliente_id" id="cliente_id" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Prioridade: </legend>
-                        <select name="prioridade" id="prioridade" required autofocus/>
+                    <div class="form-group">
+                        <label for="cliente_id">Cliente</label>
+                        <input type="number" name="cliente_id" id="cliente_id" class="form-control" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="prioridade">Prioridade</label>
+                        <select name="prioridade" id="prioridade" class="form-control" required autofocus/>
                         <option value="1" id="prioridade">Baixo</option>
                         <option value="0" id="prioridade">Médio</option>
                         <option value="2" id="prioridade">Alto</option>
                         </select>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Data: </legend>
-                        <input type="date" name="data_criacao" id="data_criacao" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Descrição: </legend>
-                        <input type="text" name="descricao" id="descricao" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Quantidade de aprovadores: </legend>
-                        <select name="qtdaprovadores" id="qtdaprovadores" required autofocus/>
-                        <option value="1" id="ativo">Aprovado</option>
-                        <option value="0" id="ativo">Desaprovado</option>
+                    </div>
+                    <div class="form-group">
+                        <label for="data_criacao">Data</label>
+                        <input type="date" name="data_criacao" id="data_criacao" class="form-control" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" name="descricao" id="descricao" class="form-control" required autofocus/>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="qtdaprovadores">Quantidade de aprovadores</label>
+                        <select name="qtdaprovadores" id="qtdaprovadores" class="form-control" required autofocus/>
+                            <option value="0" id="ativo">Primeira aprovação</option>
+                            <option value="1" id="ativo">Segunda aprovação</option>
+                            <option value="2" id="ativo">Terceira aprovação</option>
                         </select>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Tipo de alerta: </legend>
-                        <select name="tipoalerta_id" id="tipoalerta_id" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoalerta_id">Tipo de alerta</label>
+                        <select name="tipoalerta_id" id="tipoalerta_id" class="form-control" required autofocus/>
                         @if($tipoalertas->count() > 0)
                             @foreach($tipoalertas as $tipoalerta)
                                 <option value="{{$tipoalerta->id}}">{{$tipoalerta->descricao}}</option>
                             @endForeach
                         @endif
                         </select>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Status: </legend>
-                        <select name="statusalerta_id" id="statusalerta_id" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="statusalerta_id">Status</label>
+                        <select name="statusalerta_id" id="statusalerta_id" class="form-control" required autofocus/>
                         @if($statusalertas->count() > 0)
                             @foreach($statusalertas as $statusalerta)
                                 <option value="{{$statusalerta->id}}">{{$statusalerta->descricao}}</option>
                             @endForeach
                         @endif
                          </select>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Usuário: </legend>
-                        <select name="usuario_id" id="usuario_id" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario_id">Usúario</label>
+                        <select name="usuario_id" id="usuario_id" class="form-control" required autofocus/>
                         @if($usuarios->count() > 0)
                             @foreach($usuarios as $usuario)
                                 <option value="{{$usuario->id}}">{{$usuario->nome}}</option>
                             @endForeach
                         @endif
                         </select>
-                    </fieldset>
-                    <fieldset class="botao">
-                        <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />
-                    </fieldset>
+                    </div>
+                    <div>
+                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Cadastrar</button>
+                    </div>
                 </form>
-            </div>
         </section>
 @endsection

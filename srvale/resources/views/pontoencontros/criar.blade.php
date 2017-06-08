@@ -7,21 +7,19 @@
     <h1> Cadastro de Ponto de Encontro </h1>
 
         <section>
-            <div class="formulario">
                 <form method="post" action="{{ route('pontoencontros.store') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <fieldset>
-                        <legend>Nome: </legend>
-                        <input type="text" name="nome" id="nome" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Instrução: </legend>
-                        <textarea rows="10" cols="40" maxlength="500" name="instrucao" id="instrucao" required autofocus></textarea>
-                    </fieldset>
-                    <fieldset class="botao">
-                        <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />
-                    </fieldset>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" class="form-control" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="instrucao">Instrução</label>
+                        <textarea rows="10" cols="40" maxlength="500" name="instrucao" id="instrucao" class="form-control" required autofocus></textarea>
+                    </div>
+                    <div>
+                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Cadastrar</button>
+                    </div>
                 </form>
-            </div>
         </section>
 @endsection

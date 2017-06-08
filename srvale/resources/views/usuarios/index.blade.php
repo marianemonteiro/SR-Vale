@@ -5,11 +5,11 @@
 @section('conteudo')
     <h1>Painel de Controle de Usúarios</h1>
         <input type="hidden" name="token" value="{{ csrf_token() }}">
-            <section>
-                <div>
-                    <a href="{{route('usuarios.create')}}"><div id="cadastrar">Cadastrar Usuários</div></a>
-                </div>
-                <table>
+        <section>
+
+            <a href="{{route('usuarios.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Cadastrar Usuários</button></a>
+        </section>
+                <table class="table table-striped">
                     <tr>
                         <td>ID</td>
                         <td>Nome</td>
@@ -33,12 +33,14 @@
                                 <td>{{ $item -> bloqueado }}</td>
                                 <td>{{ $item -> sala -> nome }}</td>
                                 <td>{{ $item -> tipousuario ->descricao }}</td>
-                                <td class='editar'> <a href ="{{route('usuarios.edit', ['id' =>$item-> id])}}">Editar</a></td>
+                                <td><a href="{{route('usuarios.edit', ['id' =>$item->id])}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('usuarios.destroy', ['id' =>$item-> id])}}">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input class= "botao_excluir" type="submit" name="excluir" value="Excluir">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                     </form>
                                 </td>
 

@@ -5,11 +5,11 @@
 @section('conteudo')
     <h1>Painel de Controle de Pontos de Encontros</h1>
         <input type="hidden" name="token" value="{{ csrf_token() }}">
-            <section>
-                <div>
-                    <a href="{{route('pontoencontros.create')}}"><div id="cadastrar">Cadastrar Ponto de encontro</div></a>
-                </div>
-                <table>
+        <section>
+
+            <a href="{{route('pontoencontros.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Ponto de encontro</button></a>
+        </section>
+                <table class="table table-striped">
                     <tr>
                         <td>ID</td>
                         <td>Nome</td>
@@ -23,12 +23,14 @@
                                 <td>{{ $item -> id }}</td>
                                 <td>{{ $item -> nome }}</td>
                                 <td>{{ $item -> instrucao }}</td>
-                                <td class='editar'> <a href ="{{route('pontoencontros.edit', ['id' =>$item-> id])}}">Editar</a></td>
+                                <td><a href="{{route('pontoencontros.edit', ['id' =>$item->id])}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('pontoencontros.destroy', ['id' =>$item-> id])}}">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input class= "botao_excluir" type="submit" name="excluir" value="Excluir">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                     </form>
                                 </td>
 

@@ -7,35 +7,33 @@
     <h1> Cadastro de Rota de Fuga </h1>
 
         <section>
-            <div class="formulario">
                 <form method="post" action="{{ route('rotafugas.store') }}" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <fieldset>
-                        <legend>Nome: </legend>
-                        <input type="text" name="nome" id="nome" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Instrução: </legend>
-                        <textarea rows="10" cols="40" maxlength="500" name="instrucao" id="instrucao" required autofocus></textarea>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Imagem: </legend>
-                        <input type="file" name="imagem" id="imagem" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Sala: </legend>
-                        <select name="sala_id" id="sala_id" required autofocus/>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" class="form-control" id="nome" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="instrucao">Instrução</label>
+                        <textarea rows="10" cols="40" class="form-control" maxlength="500" name="instrucao" id="instrucao" required autofocus></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagem">Imagem</label>
+                        <input type="file" name="imagem" class="form-control" id="imagem" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="sala_id">Sala</label>
+                        <select name="sala_id" id="sala_id" class="form-control" required autofocus/>
                         @if($salas->count() > 0)
                             @foreach($salas as $sala)
                                 <option value="{{$sala->id}}">{{$sala->nome}}</option>
                                 @endForeach
                                 @endif
                                 </select>
-                    </fieldset>
-                    <fieldset class="botao">
-                        <input class="button" type="submit" name="salvar" value="Cadastrar"/><br /><br />
-                    </fieldset>
+                    </div>
+                    <div>
+                        <button style ="margin-bottom:10px" type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Cadastrar</button>
+                    </div>
                 </form>
-            </div>
         </section>
 @endsection

@@ -11,21 +11,21 @@
                 <form method="post" action="{{ route('salas.update', ['id' => $id]) }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PUT">
-                    <fieldset>
-                        <legend>Nome: </legend>
-                        <input type="text" name="nome" id="nome" value="{{$nome}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Numero: </legend>
-                        <input type="text" name="numero" id="numero" value="{{$numero}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Andar: </legend>
-                        <input type="text" name="andar" id="andar" value="{{$andar}}" required autofocus/>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Prédio: </legend>
-                        <select name="predio_id" id="predio_id" required autofocus/>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" class="form-control" id="nome" value="{{$nome}}" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Numero</label>
+                        <input type="text" name="numero" class="form-control" id="numero" value="{{$numero}}" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="andar">Andar</label>
+                        <input type="text" name="andar" class="form-control" id="andar" value="{{$andar}}" required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <label for="predio_id">Prédio</label>
+                        <select name="predio_id" id="predio_id" class="form-control" required autofocus/>
                         @if($predios->count() > 0)
                             @foreach($predios as $predio)
                                 @if($predio_id == $predio->id)
@@ -36,10 +36,10 @@
                                     @endForeach
                                     @endif
                          </select>
-                    </fieldset>
-                    <fieldset class="botao">
-                        <input class="button" type="submit" name="salvar" value="Atualizar"/><br /><br />
-                    </fieldset>
+                    </div>
+                    <div>
+                        <button style ="margin-bottom:10px"  type="submit" class="btn btn-primary" name="salvar" value="Cadastrar"/>Atualizar Cadastro</button>
+                    </div>
                 </form>
             </div>
         </section>

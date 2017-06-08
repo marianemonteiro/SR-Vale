@@ -5,11 +5,10 @@
 @section('conteudo')
     <h1>Painel de Controle de Prédios</h1>
         <input type="hidden" name="token" value="{{ csrf_token() }}">
-            <section>
-                <div>
-                    <a href="{{route('predios.create')}}"><div id="cadastrar">Cadastrar Prédio</div></a>
-                </div>
-                <table>
+        <section>
+            <a href="{{route('predios.create')}}"><button style ="margin-bottom:10px" type="button" class="btn btn-primary">Cadastrar Prédio</button></a>
+        </section>
+                <table class="table table-striped">
                     <tr>
                         <td>ID</td>
                         <td>Nome</td>
@@ -27,12 +26,14 @@
                                 <td>{{ $item -> qtdandar }}</td>
                                 <td>{{ $item -> descricao }}</td>
                                 <td>{{ $item -> pontoencontro -> nome }}</td>
-                                <td class='editar'> <a href ="{{route('predios.edit', ['id' =>$item-> id])}}">Editar</a></td>
+                                <td><a href="{{route('predios.edit', ['id' =>$item->id])}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 <td class='excluir'>
                                     <form method="post" action="{{route('predios.destroy', ['id' =>$item-> id])}}">
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input class= "botao_excluir" type="submit" name="excluir" value="Excluir">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
                                     </form>
                                 </td>
 
