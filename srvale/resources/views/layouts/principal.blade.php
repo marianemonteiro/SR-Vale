@@ -7,7 +7,7 @@
     <meta name="keywords" content="Faculdade UCL">
     <link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <title> SR Vale </title>
+    <title> Security Route </title>
         @yield('estilos')
 
 </head>
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">Security Route Vale</a>
+                <a class="navbar-brand">Security Route</a>
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="{{route('usuarios.index')}}">Usuários</a></li>

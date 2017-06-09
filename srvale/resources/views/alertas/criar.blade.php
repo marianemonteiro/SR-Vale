@@ -1,10 +1,10 @@
 @extends('layouts.principal')
 
-@section('titulo', 'Cadastro de Alertas')
+@section('titulo', 'Cadastro de Alerta')
 
 @section('conteudo')
 
-    <h1> Cadastro de Alertas </h1>
+    <h1> Cadastro de Alerta </h1>
 
         <section>
                 <form method="post" action="{{ route('alertas.store') }}">

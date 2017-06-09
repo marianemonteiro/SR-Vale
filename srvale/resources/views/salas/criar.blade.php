@@ -1,10 +1,10 @@
 @extends('layouts.principal')
 
-@section('titulo', 'Cadastro de Salas')
+@section('titulo', 'Cadastro de Sala')
 
 @section('conteudo')
 
-    <h1> Cadastro de Salas </h1>
+    <h1> Cadastro de Sala </h1>
 
         <section>
                 <form method="post" action="{{ route('salas.store') }}">
