@@ -40,7 +40,7 @@ class RotafugasController extends Controller
         $path = storage_path('imagens/' . $nome_imagem);
 
         //Modifica como vai salvar o arquivo no banco
-        $sub_var = substr($nova_imagem,36);
+        $sub_var = substr($nova_imagem,37);
 
         $rotafugas = new Rotafuga();
         $rotafugas -> nome  = Input::get('nome');
@@ -98,7 +98,7 @@ class RotafugasController extends Controller
         $path = storage_path('imagens/' . $nome_imagem);
 
         //Modifica como vai salvar o arquivo no banco
-        $sub_var = substr($imagem,36);
+        $sub_var = substr($imagem,37);
 
         $rotafugas = Rotafuga::find ($id);
         $rotafugas -> nome  = Input::get('nome');
