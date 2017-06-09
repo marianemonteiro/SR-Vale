@@ -16,7 +16,6 @@
                     </div>
                     <div class="form-group">
                     <label for="email">E-mail</label>
-                        <legend>E-mail: </legend>
                         <input type="text" name="email" class="form-control" id="email" value="{{$email}}" required autofocus/>
                     </div>
                      <div class="form-group">
