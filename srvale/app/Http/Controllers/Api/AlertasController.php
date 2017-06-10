@@ -47,13 +47,13 @@ class AlertasController extends Controller
     public function store(Request $request)
     {
         $data = $request -> json() -> all();
-        $alerta = new Pontoencontro();
+        $alerta = new Alerta();
 
         $alerta -> cliente_id = $data['cliente_id'];
         $alerta -> prioridade = 2;
         $alerta -> data_criacao = date();
         $alerta -> qtdaprovadores = 0;
-        $alerta -> tipoalerta_id = 1;
+        $alerta -> tipoalerta_id = $data['tipoalerta_id'];
         $alerta -> statusalerta_id = 1;
         $alerta -> usuario_id = 1;
         $alerta -> save();
