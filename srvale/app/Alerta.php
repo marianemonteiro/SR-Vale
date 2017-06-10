@@ -13,7 +13,7 @@ class Alerta extends Model
 
     public function statusalerta(){
 
-        return $this -> belongsTo(Tipoalerta::Class);
+        return $this -> belongsTo(Statusalerta::Class);
     }
 
     public function tipomensagen(){
