@@ -53,7 +53,7 @@ class AlertasController extends Controller
         $alerta -> prioridade = 2;
         $alerta -> data_criacao = date('y-m-d');
         $alerta -> descricao = $data['descricao'];
-        $alerta -> qtdaprovadores = 0;
+        $alerta -> qtdaprovadores = 1;
         $alerta -> tipoalerta_id = $data['tipoalerta_id'];
         $alerta -> statusalerta_id = 1;
         $alerta -> usuario_id = 1;
